@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/Montserrat-Bold.eot");
+  src: url("../assets/Montserrat-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../assets/Montserrat-Bold.woff") format("woff"),
+    url("../assets/Montserrat-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../assets/Montserrat-Regular.eot");
+  src: url("../assets/Montserrat-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("../assets/Montserrat-Regular.woff") format("woff"),
+    url("../assets/Montserrat-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
