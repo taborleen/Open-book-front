@@ -1,0 +1,53 @@
+.header {
+    height: 138px;
+    background-color: #A0293D;
+}
+
+.nameShop {
+    width: 1200px;
+    margin-left: 150px ;
+    height: 58px;
+}
+
+.nameShop h2 {
+    padding-top: 32px;
+    color: white;
+    font-weight: 200;
+}
+
+.pages {
+    display: flex;
+    margin-left: 150px;
+    width: 1200px;
+    height: 80px;
+    justify-content: space-between;
+    color: white;
+    padding-top: 40px;
+}
+
+.textPages {
+    
+    display: flex;
+    list-style: none;
+    width: 600px;
+    justify-content: space-between;
+    
+}
+
+
+.logoPages {
+    display: flex;
+    list-style: none;
+    width: 125px;
+    justify-content: space-between;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.active {
+    text-decoration: none;
+    color: gold;
+}
