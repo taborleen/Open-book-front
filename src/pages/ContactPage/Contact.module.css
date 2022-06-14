@@ -1,0 +1,72 @@
+YMaps[class$="map"]:first-child:not(:last-child) {
+    display: none;
+  }
+  
+  .content {
+    width: 1440px;
+    min-height: 520px;
+    display: flex;
+    margin: auto;
+  }
+  
+  .info {
+    width: 40%;
+  }
+
+  .concatConteiner {
+    width: 60%;
+  }
+
+  .concat {
+    margin-top: 145px ;
+  }
+
+  .infoText {
+    margin-top: 100px;
+    margin-left: 130px;
+  }
+
+  .infoText h1 {
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  .street {
+    margin-top: 50px;
+  }
+
+  .social {
+    margin-top: 30px;
+    font-weight: 200px;
+  }
+  .infoText ul {
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    text-decoration: none;
+  }
+  .infoText ul li {
+    margin-right: 20px;
+  }
+
+  .link {
+    text-decoration: none;
+    color: #A7A7A7;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+
+  .logo {
+    margin-top: 15px;
+    width: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+
+ 
