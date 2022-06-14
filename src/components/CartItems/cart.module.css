@@ -4,7 +4,17 @@
 }
 .cart{
     border: 1px solid black;
+    width: 200px;
 }
 img{
-    width: 100%;
+    width: 200px;
+}
+
+.link {
+    text-decoration: none;
+    
+}
+
+li {
+    list-style-type: none;
 }
