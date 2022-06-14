@@ -1,0 +1,10 @@
+.main{
+    display: flex;
+    justify-content: space-between;
+}
+.cart{
+    border: 1px solid black;
+}
+img{
+    width: 100%;
+}
