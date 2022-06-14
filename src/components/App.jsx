@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./App";
+import "./App.css";
 
 const App = () => {
   return <div></div>;
