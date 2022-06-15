@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import imageZakladka from "../../assets/image/bookmark-solid.svg";
 import imageBasket from "../../assets/image/cart-shopping-solid.svg";
 import imageProf from "../../assets/image/circle-user-solid.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { doLogin, fetchOneUser } from "../../features/auth";
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
+
+
 
   return (
     <div className={styles.header}>
@@ -91,7 +96,7 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/profile">
+                <Link to={`/profile/${user}`}>
                   <img src={imageProf} alt="" />
                 </Link>
               </li>

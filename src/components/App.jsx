@@ -11,6 +11,7 @@ import NewBookPage from "./pages/NewBookPage";
 import BestBook from "./pages/BestBookPage";
 import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
+import Profile from "./pages/Profile/Profile";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/novelties" element={<NewBookPage />} />
         <Route path="/best" element={<BestBook />} />
         <Route path="/contacts" element={<Contact />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
       <Footer />
     </>

@@ -13,7 +13,7 @@ export const registerUser = createAsyncThunk(
       });
 
       const data = await res.json();
-      console.log(data)
+      console.log(data);
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       } else {
@@ -42,6 +42,25 @@ export const doLogin = createAsyncThunk(
         return thunkAPI.rejectWithValue(data.error);
       } else {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.id);
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const fetchOneUser = createAsyncThunk(
+  "auth/fetchOneUser",
+  async (id, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3001/users/${id}`);
+
+      const data = await res.json();
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
         return thunkAPI.fulfillWithValue(data);
       }
     } catch (error) {
@@ -55,6 +74,8 @@ const initialState = {
   signinUp: false,
   error: null,
   registered: false,
+  userAuth: {},
+  user: localStorage.getItem("user"),
   token: localStorage.getItem("token"),
 };
 
@@ -82,11 +103,18 @@ const authSlice = createSlice({
       .addCase(doLogin.fulfilled, (state, action) => {
         state.signinUp = false;
         state.error = null;
-        console.log(action);
         state.token = action.payload.token;
+        state.user = action.payload.id;
       })
       .addCase(doLogin.rejected, (state, action) => {
         state.signinUp = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchOneUser.fulfilled, (state, action) => {
+        state.userAuth = action.payload;
+        state.error = null;
+      })
+      .addCase(fetchOneUser.rejected, (state, action) => {
         state.error = action.payload;
       });
   },
