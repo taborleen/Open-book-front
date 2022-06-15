@@ -12,8 +12,6 @@ const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
 
-
-
   return (
     <div className={styles.header}>
       <div className={styles.nameShop}>
@@ -59,6 +57,16 @@ const Header = () => {
               to="/discounts"
             >
               Скидки
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/authors"
+            >
+              Авторы
             </NavLink>
           </li>
           <li>

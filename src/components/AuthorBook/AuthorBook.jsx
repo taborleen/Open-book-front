@@ -8,7 +8,7 @@ import CartItems from '../CartItems';
 const AuthorBook = () => {
   const dispatch = useDispatch();
   const author = useSelector((state) => state.author.author)
-  const book = useSelector((state) => state.book.book)
+  const book = useSelector((state) => state.author.book)
 
     const [get, setGet] = useState(false)
   
