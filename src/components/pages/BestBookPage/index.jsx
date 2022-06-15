@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchBestBook } from '../../features/bestBookSlice';
-import CartItems from '../CartItems';
+import { fetchBestBook } from '../../../features/bestBookSlice';
+import CartItems from '../../CartItems';
 
-import styles from "../CartItems/cart.module.css"
+import styles from "../../CartItems/cart.module.css"
 
 const BestBook = () => {
     const dispatch = useDispatch()
