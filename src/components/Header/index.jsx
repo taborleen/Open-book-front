@@ -4,8 +4,11 @@ import { Link, NavLink } from "react-router-dom";
 import imageZakladka from "../../assets/image/bookmark-solid.svg";
 import imageBasket from "../../assets/image/cart-shopping-solid.svg";
 import imageProf from "../../assets/image/circle-user-solid.svg";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const token = useSelector((state) => state.auth.token);
+
   return (
     <div className={styles.header}>
       <div className={styles.nameShop}>
@@ -14,32 +17,62 @@ const Header = () => {
       <div className={styles.pages}>
         <ul className={styles.textPages}>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/genres">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/genres"
+            >
               Жанры
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/novelties">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/novelties"
+            >
               Новинки
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/best">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/best"
+            >
               Лучшие
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/discounts">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/discounts"
+            >
               Скидки
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/forum">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/forum"
+            >
               Форум
             </NavLink>
           </li>
           <li>
-            <NavLink className={({isActive}) => isActive ? `${styles.link} ${styles.active}` : styles.link} to="/contacts">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${styles.link} ${styles.active}` : styles.link
+              }
+              to="/contacts"
+            >
               Контакты
             </NavLink>
           </li>
@@ -50,16 +83,29 @@ const Header = () => {
               <img src={imageZakladka} alt="" />
             </Link>
           </li>
-          <li>
-            <Link to="/basket">
-              <img src={imageBasket} alt="" />
-            </Link>
-          </li>
-          <li>
-            <Link to="/profile">
-              <img src={imageProf} alt="" />
-            </Link>
-          </li>
+          {token ? (
+            <>
+              <li>
+                <Link to="/basket">
+                  <img src={imageBasket} alt="" />
+                </Link>
+              </li>
+              <li>
+                <Link to="/profile">
+                  <img src={imageProf} alt="" />
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/signup">Signup</Link>
+              </li>
+              <li>
+                <Link to="/signin">Signin</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </div>

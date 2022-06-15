@@ -9,6 +9,7 @@ export const fetchNewBooks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:3001/books`);
+
       return await res.json();
     } catch (e) {
       return thunkAPI.rejectWithValue(e);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { registerUser } from "../../../features/auth";
 
 const Signup = () => {
@@ -108,6 +109,9 @@ const Signup = () => {
         break;
       case "Lastname":
         setLastnameDirty(true);
+        break;
+      default:
+        return false;
     }
   };
 
@@ -134,6 +138,7 @@ const Signup = () => {
           {nameDirty && nameError && <div>{nameError}</div>}
           <input
             name="name"
+            value={name}
             type="text"
             placeholder="Введите ваше имя"
             onBlur={(e) => handleBlur(e)}
@@ -145,6 +150,7 @@ const Signup = () => {
           <input
             name="Lastname"
             type="text"
+            value={lastname}
             placeholder="Введите вашу фамилию"
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangeLastname(e)}
@@ -154,6 +160,7 @@ const Signup = () => {
           {emailDirty && emailError && <div>{emailError}</div>}
           <input
             name="email"
+            value={email}
             type="email"
             placeholder="name@example.com"
             onBlur={(e) => handleBlur(e)}
@@ -163,6 +170,7 @@ const Signup = () => {
         <div>
           <InputMask
             mask="+7 (999) 999 9999"
+            value={tel}
             type="tel"
             placeholder="Телефон"
             onBlur={(e) => handleBlur(e)}
@@ -173,6 +181,7 @@ const Signup = () => {
           {loginDirty && loginError && <div>{loginError}</div>}
           <input
             name="login"
+            value={login}
             type="login"
             placeholder="Логин"
             onBlur={(e) => handleBlur(e)}
@@ -183,6 +192,7 @@ const Signup = () => {
           {passwordDirty && passwordError && <div>{passwordError}</div>}
           <input
             name="password"
+            value={password}
             type={visible ? "text" : "password"}
             placeholder="Пароль"
             onBlur={(e) => handleBlur(e)}
@@ -192,6 +202,11 @@ const Signup = () => {
         </div>
         <button disabled={!disabled}>Регистрация</button>
       </form>
+      <div>
+        <span>
+          Уже есть аккаунт? <Link to="/signin">Войти</Link>
+        </span>
+      </div>
     </div>
   );
 };
