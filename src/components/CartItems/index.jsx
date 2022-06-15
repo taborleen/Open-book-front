@@ -8,7 +8,7 @@ const CartItems = (props) => {
         <div><img src={props.item.image[0]} alt="" /></div>
         <div>{props.item.author.name}</div>
         <div>{props.item.name}</div>
-        <div>{props.item.price}</div>
+        <div>{props.item.discount > 0? <div><div>{props.newPrice}</div><div>{props.item.price}</div></div>  : props.item.price}</div>
     </div>
   )
   
