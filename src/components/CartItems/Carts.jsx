@@ -16,7 +16,8 @@ const Carts = () => {
 
   return (<div className={styles.main} >
     {carts.map((item) => {
-      return <div className={styles.CartItemsWrapper}> <CartItems key={item.id} item={item} /></div> ;
+      const newPrice = item.price - (item.price / 100 * item.discount)
+      return <div className={styles.CartItemsWrapper}> <CartItems key={item.id} item={item} /></div>;
     })}
   </div>
   )
