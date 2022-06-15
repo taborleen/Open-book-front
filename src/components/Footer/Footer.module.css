@@ -6,6 +6,9 @@
 .footer {
   height: 138px;
   background-color: #2C2C2C;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footerInfo {

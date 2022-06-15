@@ -6,7 +6,7 @@ import styles from "../../CartItems/cart.module.css";
 import { Link } from "react-router-dom";
 
 const NewBookPage = () => {
-  const newBooks = useSelector((state) => state.newBooks);
+  const newBooks = useSelector((state) => state.newBook.newBooks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,8 +30,8 @@ const NewBookPage = () => {
             </Link>
           </li>
           <li>
-            <Link className={styles.link} to="/">
-              Скидки
+            <Link className={styles.link} to="/novelties">
+              Новинки
             </Link>
           </li>
         </ul>

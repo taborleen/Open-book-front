@@ -25,30 +25,30 @@ export const registerUser = createAsyncThunk(
   }
 );
 
-// export const doLogin = createAsyncThunk(
-//   "auth/doLogin",
-//   async ({ login, password }, thunkAPI) => {
-//     try {
-//       const res = await fetch("http://localhost:3001/users/login", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({ login, password }),
-//       });
+export const doLogin = createAsyncThunk(
+  "auth/doLogin",
+  async ({ login, password }, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3001/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ login, password }),
+      });
 
-//       const data = await res.json();
-//       if (data.error) {
-//         return thunkAPI.rejectWithValue(data.error);
-//       } else {
-//         localStorage.setItem("token", data.token);
-//         return thunkAPI.fulfillWithValue(data);
-//       }
-//     } catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-//   }
-// );
+      const data = await res.json();
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
+        localStorage.setItem("token", data.token);
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 const initialState = {
   signupIn: false,
@@ -76,19 +76,19 @@ const authSlice = createSlice({
         state.signupIn = false;
         state.error = action.payload;
       })
-      // .addCase(doLogin.pending, (state, action) => {
-      //   state.signinUp = true;
-      // })
-      // .addCase(doLogin.fulfilled, (state, action) => {
-      //   state.signinUp = false;
-      //   state.error = null;
-      //   console.log(action);
-      //   state.token = action.payload.token;
-      // })
-      // .addCase(doLogin.rejected, (state, action) => {
-      //   state.signinUp = false;
-      //   state.error = action.payload;
-      // });
+      .addCase(doLogin.pending, (state, action) => {
+        state.signinUp = true;
+      })
+      .addCase(doLogin.fulfilled, (state, action) => {
+        state.signinUp = false;
+        state.error = null;
+        console.log(action);
+        state.token = action.payload.token;
+      })
+      .addCase(doLogin.rejected, (state, action) => {
+        state.signinUp = false;
+        state.error = action.payload;
+      });
   },
 });
 
