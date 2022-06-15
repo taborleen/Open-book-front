@@ -17,8 +17,7 @@ const Carts = () => {
   return (<div className={styles.main} >
     {carts.map((item) => {
       const newPrice = item.price - (item.price / 100 * item.discount)
-      console.log(newPrice);
-      return <CartItems key={item.id} newPrice={newPrice} item={item} />;
+      return <div className={styles.CartItemsWrapper}> <CartItems key={item.id} item={item} /></div>;
     })}
   </div>
   )

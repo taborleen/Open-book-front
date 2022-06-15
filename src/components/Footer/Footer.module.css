@@ -1,0 +1,37 @@
+.logo {
+    margin-right: 36px;
+}
+
+
+.footer {
+  height: 138px;
+  background-color: #2C2C2C;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footerInfo {
+    justify-content: space-between;
+    margin-left: 150px;
+    width: 1200px;
+    height: 80px;
+    color: white;
+    padding-top: 40px;
+    display: flex;
+}
+
+.link {
+    text-decoration: none;
+    color: #fff;
+    margin-right: 36px;
+    
+}
+
+.info {
+    
+    width: 600px;
+    display: flex;
+    list-style: none;
+    flex: 1;
+}

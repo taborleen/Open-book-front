@@ -27,6 +27,11 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  position: relative;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
