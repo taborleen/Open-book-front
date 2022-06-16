@@ -5,6 +5,7 @@ import bestBookSlice from "../features/bestBookSlice";
 import cartSlice from "../features/cartSlice";
 import discountSlice from "../features/discountBookSlice";
 import newBooksSlice from "../features/newBooksSlice";
+import genresBookSlice from "../features/genresBookSlice";
 import usersSlice from "../features/usersSlice";
 import reducerBook from "../features/bookReducer";
 import reviewsReducer from "../features/inputReducer";
@@ -15,6 +16,7 @@ export const store = configureStore({
     auth: authSlice,
     bestBook: bestBookSlice,
     newBook: newBooksSlice,
+    genresBook: genresBookSlice,
     author: authorSlice,
     cart: cartSlice,
     user: usersSlice,

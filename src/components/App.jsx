@@ -14,6 +14,9 @@ import Book from "./pages/BooksPage/Books";
 import Profile from "./pages/Profile/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
 import DiscountPage from "./pages/DiscountPage";
+import BooksGenre from "./pages/GenresBookPage/BooksGenre";
+import GenrePage from "./pages/GenresBookPage/GenrePage";
+import Allbooks from "./pages/GenresBookPage/Allbooks";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -21,6 +24,7 @@ const App = () => {
   return (
     <>
       <Header />
+
       <div className="container">
         <main>
           <Routes>
@@ -33,7 +37,11 @@ const App = () => {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/authors" element={<AuthorBook />} />
             <Route path="/discounts" element={<DiscountPage />} />
-            <Route path="/books/:id" element={<Book/>}/>
+            <Route path="/genres/*" element={<GenrePage />}>
+              <Route index element={<Allbooks />} />
+              <Route path=":id" element={<BooksGenre />} />
+            </Route>
+            <Route path="/books/:id" element={<Book />} />
           </Routes>
         </main>
       </div>
