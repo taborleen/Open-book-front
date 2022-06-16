@@ -6,7 +6,7 @@ import CartItems from '../CartItems';
 
 const Carts = () => {
   const dispatch = useDispatch();
-  const carts = useSelector((state) => state.carts)
+  const carts = useSelector((state) => state.cart.carts)
   
 
   useEffect(() => {
