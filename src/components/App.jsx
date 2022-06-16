@@ -10,6 +10,7 @@ import NewBookPage from "./pages/NewBookPage";
 import BestBook from "./pages/BestBookPage";
 import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
+import Book from "./pages/BooksPage/Books";
 import Profile from "./pages/Profile/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
 import DiscountPage from "./pages/DiscountPage";
@@ -40,6 +41,7 @@ const App = () => {
               <Route index element={<Allbooks />} />
               <Route path=":id" element={<BooksGenre />} />
             </Route>
+            <Route path="/books/:id" element={<Book />} />
           </Routes>
         </main>
       </div>
@@ -47,5 +49,4 @@ const App = () => {
     </>
   );
 };
-
 export default App;
