@@ -69,12 +69,38 @@ export const fetchOneUser = createAsyncThunk(
   }
 );
 
+export const editAvatar = createAsyncThunk(
+  "auth/editAvatar",
+  async ({ file, id }, thunkAPI) => {
+    try {
+      const formData = new FormData();
+      formData.append("avatar", file);
+
+      const res = await fetch(`http://localhost:3001/users/avatar/${id}`, {
+        method: "PATCH",
+        body: formData,
+      });
+
+      const data = await res.json();
+      console.log(data);
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = {
   signupIn: false,
   signinUp: false,
   error: null,
   registered: false,
   userAuth: {},
+  image: {},
   user: localStorage.getItem("user"),
   token: localStorage.getItem("token"),
 };
@@ -116,6 +142,9 @@ const authSlice = createSlice({
       })
       .addCase(fetchOneUser.rejected, (state, action) => {
         state.error = action.payload;
+      })
+      .addCase(editAvatar.fulfilled, (state, action) => {
+        state.image = action.payload;
       });
   },
 });

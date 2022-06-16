@@ -17,7 +17,7 @@ export const fetchDiscountBooks = createAsyncThunk(
   }
 );
 
-export const newBooksSlice = createSlice({
+export const discountSlice = createSlice({
   name: "discountBooks",
   initialState,
   reducers: {},
@@ -34,4 +34,4 @@ export const newBooksSlice = createSlice({
   },
 });
 
-export default newBooksSlice.reducer;
+export default discountSlice.reducer;

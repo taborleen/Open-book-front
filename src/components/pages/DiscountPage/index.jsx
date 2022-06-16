@@ -17,7 +17,7 @@ function DiscountPage(props) {
   return (
     <div className={styles.main}>
       {discountBook.map((bookDis) => {
-        return <CartItems key={bookDis._id} item={bookDis} />;
+        return <CartItems key={bookDis._id} book={bookDis} />;
       })}
     </div>
   );
