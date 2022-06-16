@@ -28,9 +28,15 @@ const App = () => {
       <div className="container">
         <main>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route
+              path="/"
+              element={!token ? <Navigate to="/signup" /> : <HomePage />}
+            />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/signin" element={<Signin />} />
+            <Route
+              path="/signin"
+              element={token ? <Navigate to="/" /> : <Signin />}
+            />
             <Route path="/novelties" element={<NewBookPage />} />
             <Route path="/best" element={<BestBook />} />
             <Route path="/contacts" element={<Contact />} />
