@@ -12,6 +12,7 @@ import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
 import Profile from "./pages/Profile/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
+import DiscountPage from "./pages/DiscountPage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/contacts" element={<Contact />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/authors" element={<AuthorBook />} />
+            <Route path="/discounts" element={<DiscountPage />} />
           </Routes>
         </main>
       </div>
