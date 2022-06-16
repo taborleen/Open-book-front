@@ -9,6 +9,5 @@ export const store = configureStore({
     auth: authSlice,
     bestBook: bestBookSlice,
     newBook: newBooksSlice,
-    discountBook: discountBookSlice,
   },
 });
