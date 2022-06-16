@@ -16,7 +16,6 @@ const AuthorBook = () => {
   }, [dispatch]);
 
   const booksAuthor = (authorId) => {
-    //console.log(authorId)
     dispatch(fetchBooks(authorId));
     setGet(true);
   };
