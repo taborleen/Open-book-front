@@ -19,17 +19,19 @@ const Profile = () => {
 
   const handleUpdateAvatar = (file) => {
     dispatch(editAvatar({ file, id }));
+    localStorage.setItem("avatar", user.avatar);
   };
-
-  const avat =
-    "https://c0.klipartz.com/pngpicture/684/352/gratis-png-un-golpe-hombre-saitama-anime-superheroe-un-golpe.png";
 
   return (
     <>
       <div className={styles.user}>
         <div>
           <img
-            src={image.avatar ? `http://localhost:3001/${image.avatar}` : avat}
+            src={
+              image.avatar
+                ? `http://localhost:3001/${user.avatar}`
+                : user.avatar
+            }
             alt=""
           />
           <div className={styles.editor}>

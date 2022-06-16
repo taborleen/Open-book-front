@@ -20,7 +20,7 @@ const BestBook = () => {
     <div className={styles.main}>
       {best.map((item) => {
 
-        return <CartItems key={item.id} item={item} />;
+        return <CartItems key={item.id} book={item} />;
       })}
     </div>
   );
