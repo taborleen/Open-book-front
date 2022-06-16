@@ -39,7 +39,7 @@ const NewBookPage = () => {
       </div>
       <div className={styles.main}>
         {result.map((book) => {
-          return <CartItems key={book._id} item={book} />;
+          return <CartItems key={book._id} book={book} />;
         })}
       </div>
     </>

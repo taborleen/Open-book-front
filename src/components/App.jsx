@@ -2,16 +2,18 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
-import HomePage from "./Pages/HomePage";
-
+import HomePage from "./pages/HomePage";
 import "./App.css";
-import Signup from "./Pages/SignupPage";
-import Signin from "./Pages/SigninPage";
-import NewBookPage from "./Pages/NewBookPage";
-import BestBook from "./Pages/BestBookPage";
-import Contact from "./Pages/ContactPage";
+import Signup from "./pages/SignupPage";
+import Signin from "./pages/SigninPage";
+import NewBookPage from "./pages/NewBookPage";
+import BestBook from "./pages/BestBookPage";
+import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
-import Book from "./Pages/BooksPage/Books";
+import Book from "./pages/BooksPage/Books";
+import Profile from "./pages/Profile/Profile";
+import AuthorBook from "./AuthorBook/AuthorBook";
+import DiscountPage from "./pages/DiscountPage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -19,15 +21,22 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/novelties" element={<NewBookPage />} />
-        <Route path="/best" element={<BestBook />} />
-        <Route path="/contacts" element={<Contact />} />
-        <Route path="/books/:id" element={<Book/>}/>
-      </Routes>
+      <div className="container">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/novelties" element={<NewBookPage />} />
+            <Route path="/best" element={<BestBook />} />
+            <Route path="/contacts" element={<Contact />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/authors" element={<AuthorBook />} />
+            <Route path="/discounts" element={<DiscountPage />} />
+            <Route path="/books/:id" element={<Book/>}/>
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </>
   );

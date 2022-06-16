@@ -6,7 +6,6 @@ import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
 import ChosenBook from "./ChosenBook";
 import styles from "./books.module.css";
-import {DemoCarousel} from "./Carousel";
 
 const Book = () => {
   const dispatch = useDispatch();
