@@ -1,0 +1,8 @@
+.user {
+    display: flex;
+    padding-top: 50px;
+}
+
+.user img {
+    margin-right: 50px;
+}

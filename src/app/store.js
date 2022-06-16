@@ -4,6 +4,7 @@ import authorSlice from "../features/authorSlice";
 import bestBookSlice from "../features/bestBookSlice";
 import cartSlice from "../features/cartSlice";
 import newBooksSlice from "../features/newBooksSlice";
+import usersSlice from "../features/usersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     newBook: newBooksSlice,
     author: authorSlice,
     cart: cartSlice,
+    user: usersSlice,
   },
 });

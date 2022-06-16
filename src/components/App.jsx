@@ -19,16 +19,20 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/novelties" element={<NewBookPage />} />
-        <Route path="/best" element={<BestBook />} />
-        <Route path="/contacts" element={<Contact />} />
-        <Route path="/profile/:id" element={<Profile />} />
-        <Route path="/authors" element={<AuthorBook />} />
-      </Routes>
+      <div className="container">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/novelties" element={<NewBookPage />} />
+            <Route path="/best" element={<BestBook />} />
+            <Route path="/contacts" element={<Contact />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/authors" element={<AuthorBook />} />
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </>
   );

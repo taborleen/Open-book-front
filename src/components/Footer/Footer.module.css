@@ -7,17 +7,15 @@
   height: 138px;
   background-color: #2C2C2C;
   position: absolute;
-  bottom: 0;
+  /* bottom: 0; */
   width: 100%;
 }
 
 .footerInfo {
     justify-content: space-between;
-    margin-left: 150px;
-    width: 1200px;
     height: 80px;
     color: white;
-    padding-top: 40px;
+    padding-top: 60px;
     display: flex;
 }
 
