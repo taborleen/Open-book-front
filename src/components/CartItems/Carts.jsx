@@ -16,7 +16,7 @@ const Carts = () => {
 
   return (<div className={styles.main} >
     {carts.map((item) => {
-      return <div className={styles.CartItemsWrapper}> <CartItems key={item.id} item={item} /></div>;
+      return <div className={styles.CartItemsWrapper}> <CartItems key={item.id} book={item} /></div>;
     })}
   </div>
   )

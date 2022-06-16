@@ -1,0 +1,89 @@
+.container{
+    width: 600px;
+    margin: auto;
+    align-items: center;
+}
+
+.main{
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+img {
+    width: 100%;
+}
+
+
+
+.authorName{
+    color: gray;
+    padding-bottom: 10px;
+}
+
+.nameOfTheBook{
+    padding-bottom: 15px;
+}
+
+.inStock {
+    padding: 10px;
+    border-bottom: 1px solid #CDCDCD;
+}
+
+.priceAndBtn{
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #CDCDCD;
+
+}
+
+.priceAndBtn button{
+  outline: none;
+}
+
+.price{
+    line-height: 40px;
+}
+
+.btn {
+    border-radius: 8px;
+    color: #FFFFFF;
+    height: 40px;
+    padding: 10px 25px;
+    border: 2px solid #000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: #A0293D;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* 1 */
+  .btn {
+    transition: all 0.3s ease;
+  }
+  .btn:hover {
+     box-shadow:
+     -7px -7px 20px 0px #fff9,
+     -4px -4px 5px 0px #fff9,
+     7px 7px 20px 0px #0002,
+     4px 4px 5px 0px #0001;
+  }
+
+  .text  {
+    font-size: 14px;
+
+}
+.pic {
+    width: 50%;
+    margin-right: 30px;
+}
+
