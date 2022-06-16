@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   genresBook: [],
-  book: [],
+  books: [],
 };
 
 export const fetchGenresBook = createAsyncThunk(
@@ -18,11 +18,11 @@ export const fetchGenresBook = createAsyncThunk(
   }
 );
 
-export const fetchBooks = createAsyncThunk(
-  "books/fetchBooks",
-  async (_id, thunkAPI) => {
+export const fetchGenresBooks = createAsyncThunk(
+  "books/fetchGenresBooks",
+  async (id, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/books/genre/${_id}`);
+      const res = await fetch(`http://localhost:3001/books/genre/${id}`);
       const data = await res.json();
       return data
     } catch (e) {
@@ -53,12 +53,13 @@ export const genresBookSlice = createSlice({
       .addCase(fetchGenresBook.fulfilled, (state, action) => {
         state.genresBook = action.payload;
       })
-      .addCase(fetchBooks.fulfilled, (state, action) => {
-        state.book = action.payload
+      .addCase(fetchGenresBooks.fulfilled, (state, action) => {
+        state.books = action.payload
       })
       .addCase(fetchGetBooks.fulfilled, (state, action) => {
-        state.book.data = action.payload;
+        state.books = action.payload;
       })
+
   },
 });
 

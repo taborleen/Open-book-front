@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import HomePage from "./pages/HomePage";
-
 import "./App.css";
 import Signup from "./pages/SignupPage";
 import Signin from "./pages/SigninPage";
@@ -11,8 +10,12 @@ import NewBookPage from "./pages/NewBookPage";
 import BestBook from "./pages/BestBookPage";
 import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
+import Profile from "./pages/Profile/Profile";
+import AuthorBook from "./AuthorBook/AuthorBook";
+import DiscountPage from "./pages/DiscountPage";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
+import Allbooks from "./pages/GenresBookPage/Allbooks";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -20,16 +23,26 @@ const App = () => {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/novelties" element={<NewBookPage />} />
-        <Route path="/best" element={<BestBook />} />
-        <Route path="/contacts" element={<Contact />} />
-        <Route path="/genres" element={<GenrePage />} />
-        <Route path="/genres/:genreId" element={<BooksGenre />} />
-      </Routes>
+
+      <div className="container">
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/signin" element={<Signin />} />
+            <Route path="/novelties" element={<NewBookPage />} />
+            <Route path="/best" element={<BestBook />} />
+            <Route path="/contacts" element={<Contact />} />
+            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/authors" element={<AuthorBook />} />
+            <Route path="/discounts" element={<DiscountPage />} />
+            <Route path="/genres/*" element={<GenrePage />}>
+              <Route index element={<Allbooks />} />
+              <Route path=":id" element={<BooksGenre />} />
+            </Route>
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </>
   );

@@ -3,15 +3,19 @@ import { useSelector, useDispatch } from "react-redux";
 import styles from "./Genre.module.css";
 import { Link } from "react-router-dom";
 import { fetchGenresBook, fetchGetBooks } from "../../../features/genresBookSlice";
+import CartItems from "../../CartItems";
+import { Outlet } from "react-router-dom";
+
 
 const GenrePage = () => {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genresBook.genresBook);
-  const getBooks = useSelector((state) => state.genresBook.book)
-  console.log(getBooks)
+  const books = useSelector((state) => state.genresBook.books)
+  console.log(books);
 
   useEffect(() => {
-    dispatch(fetchGenresBook());
+    dispatch(fetchGenresBook())
+    
   }, [dispatch]);
 
   return (
@@ -27,6 +31,8 @@ const GenrePage = () => {
           ))}
         </ul>
        <div>
+       <Outlet/>
+
        
        </div>
       </div>
