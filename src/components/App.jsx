@@ -37,9 +37,9 @@ const App = () => {
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="/authors" element={<AuthorBook />} />
             <Route path="/discounts" element={<DiscountPage />} />
-            <Route path="/genres/*" element={<GenrePage />}>
+            <Route path="/genres" element={<GenrePage />}>
               <Route index element={<Allbooks />} />
-              <Route path=":id" element={<BooksGenre />} />
+              <Route path="/genres/:id" element={<BooksGenre />} />
             </Route>
             <Route path="/books/:id" element={<Book />} />
           </Routes>

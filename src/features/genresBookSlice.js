@@ -5,8 +5,8 @@ const initialState = {
   books: [],
 };
 
-export const fetchGenresBook = createAsyncThunk(
-  "genresBook/fetchGenresBook",
+export const fetchGenres = createAsyncThunk(
+  "genresBook/fetchGenres",
   async (_, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3001/genres");
@@ -50,7 +50,7 @@ export const genresBookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchGenresBook.fulfilled, (state, action) => {
+      .addCase(fetchGenres.fulfilled, (state, action) => {
         state.genresBook = action.payload;
       })
       .addCase(fetchGenresBooks.fulfilled, (state, action) => {
