@@ -90,6 +90,16 @@ const Header = () => {
                 Контакты
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+                to="/allBooks"
+              >
+                Все книги
+              </NavLink>
+            </li>
           </ul>
           <ul className={styles.logoPages}>
             <li>

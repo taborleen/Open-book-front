@@ -13,7 +13,7 @@ function DiscountPage(props) {
   useEffect(() => {
     dispatch(fetchDiscountBooks());
   }, [dispatch]);
-  console.log(discountBook);
+
   return (
     <div className={styles.main}>
       {discountBook.map((bookDis) => {
