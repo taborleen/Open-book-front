@@ -4,6 +4,7 @@ import { fetchGetBooks } from "../../../features/genresBookSlice";
 import AllBookPagination from "./AllBookPagination";
 import { useState } from "react";
 import WatchPagination from "./WatchPagination";
+
 const PaginationPage = () => {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.genresBook.books);
@@ -20,17 +21,17 @@ const PaginationPage = () => {
   }, [dispatch]);
 
   const lastElementIndex = currentPage * elementsPerPage;
-
   const firstElementIndex = lastElementIndex - elementsPerPage;
-
   const currentElement = elements.slice(firstElementIndex, lastElementIndex);
+
+  const nextPage = () => setcurrentPage((pr) => pr + 1);
+  const prevPage = () => setcurrentPage((pr) => pr - 1);
 
   const paginate = (pageNumber) => {
     setcurrentPage(pageNumber);
   };
   return (
     <div>
-      <h2>Все книги</h2>
       <AllBookPagination
         elements={currentElement}
         loading={loading}
@@ -40,6 +41,9 @@ const PaginationPage = () => {
         elementsPerPage={elementsPerPage}
         totalElements={elements.length}
         paginate={paginate}
+        nextPage={nextPage}
+        prevPage={prevPage}
+        currentPage={currentPage}
       />
     </div>
   );

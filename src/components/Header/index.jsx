@@ -25,6 +25,16 @@ const Header = () => {
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
                 }
+                to="/allBooks"
+              >
+                Главная
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
                 to="/genres"
               >
                 Жанры
@@ -88,16 +98,6 @@ const Header = () => {
                 to="/contacts"
               >
                 Контакты
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  isActive ? `${styles.link} ${styles.active}` : styles.link
-                }
-                to="/allBooks"
-              >
-                Все книги
               </NavLink>
             </li>
           </ul>

@@ -1,4 +1,18 @@
-.pageLink {
-    text-decoration: none;
-    color: red;
+.paginationWrapper {
+    margin: 0 auto;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapperBtnPagination {
+
+}
+
+.btnPagination {
+
+}
+
+.booksWrapper {
+    display: flex;
 }
