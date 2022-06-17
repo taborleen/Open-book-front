@@ -12,6 +12,7 @@ import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
 import Profile from "./pages/Profile/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
+import Carts from "./CartItems/Carts";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);

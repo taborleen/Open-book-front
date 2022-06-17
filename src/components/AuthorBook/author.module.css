@@ -1,0 +1,19 @@
+.authors{
+    border: 1px solid black;
+    width: 200px;
+}
+.author{
+    margin: 5px;
+    cursor: pointer;
+}
+.main{
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.book{
+    display: flex;
+    justify-content: space-between;
+    width: 450px;
+}

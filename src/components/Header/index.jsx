@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import imageZakladka from "../../assets/image/bookmark-solid.svg";
@@ -6,16 +6,24 @@ import imageBasket from "../../assets/image/cart-shopping-solid.svg";
 import imageProf from "../../assets/image/circle-user-solid.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { doLogin, fetchOneUser } from "../../features/auth";
+import { search } from '../../features/value';
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
 
+
+  const setText = (event) => {
+    //console.log(event.target.value);
+    dispatch(search(event.target.value))
+  }
+
   return (
     <div className={styles.header}>
       <div className={styles.nameShop}>
         <h2>Booksment</h2>
+        <input onChange={(event)=> setText(event)}/>
       </div>
       <div className={styles.pages}>
         <ul className={styles.textPages}>
