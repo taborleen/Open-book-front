@@ -11,6 +11,7 @@ import usersSlice from "../features/usersSlice";
 import reducerBook from "../features/bookReducer";
 import reviewsReducer from "../features/inputReducer";
 import similarBookReducer from "../features/similarBooksReducer";
+import basketBookSlice from '../features/basketSlice'
 
 export const store = configureStore({
   reducer: {
@@ -26,5 +27,6 @@ export const store = configureStore({
     bookById: reducerBook,
     review: reviewsReducer,
     similarBook: similarBookReducer,
+    basketBookSlice: basketBookSlice
   },
 });

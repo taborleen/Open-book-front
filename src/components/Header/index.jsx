@@ -9,9 +9,9 @@ import { doLogin, fetchOneUser } from "../../features/auth";
 import { search } from '../../features/value';
 import Carts from "../CartItems/Carts";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
   const [searchBook, setSearchBook] = useState(false)
@@ -118,7 +118,7 @@ const Header = () => {
           </ul>
           <ul className={styles.logoPages}>
             <li>
-              <Link to={`/favorites/${user}`}>
+              <Link to={`/profile/${user}/bookmarks`}>
                 <img src={imageZakladka} alt="" />
               </Link>
             </li>
