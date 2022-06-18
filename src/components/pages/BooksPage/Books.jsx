@@ -6,6 +6,7 @@ import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
 import ChosenBook from "./ChosenBook";
 import styles from "./books.module.css";
+import LoadingButton from '@mui/lab/LoadingButton';
 
 const Book = () => {
   const dispatch = useDispatch();
@@ -22,14 +23,16 @@ const Book = () => {
   }, [dispatch, id]);
 
   if (!book) {
-    return "loading";
+    return <LoadingButton className={styles.loadingBtn} fullWidth loading variant="string">
+    Submit
+  </LoadingButton>;
   }
 
   return (
     <div className={styles.container}>
       <ChosenBook book={book} key={book._id} />
-      <Reviews bookId={book._id} genres={book.genres._id} book={book._id} />
-      <SimilarBooks bookId={book._id} genres={book.genres._id} key={book._id} />
+      <Reviews bookId={book._id} key={book._id}/>
+      <SimilarBooks book={book} key={book._id} />
     </div>
   );
 };
