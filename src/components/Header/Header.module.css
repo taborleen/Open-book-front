@@ -1,8 +1,20 @@
 .header {
   height: 138px;
-  background: linear-gradient(180deg, #a0293d 0%, #7b2f21 100%);
+  background-color: #a0293d;
 }
 
+.nameShop {
+  width: 1200px;
+  margin-left: 150px;
+  height: 58px;
+  display: flex;
+}
+.nameShop input {
+  height: 20px;
+  margin-left: 50px;
+  margin-top: 40px;
+ 
+}
 .nameShop h2 {
   padding-top: 32px;
   color: white;
@@ -29,7 +41,7 @@
   list-style: none;
   width: 125px;
   justify-content: space-between;
-  align-items: center
+  align-items: center;
 }
 
 .link {

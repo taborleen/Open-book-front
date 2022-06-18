@@ -17,6 +17,7 @@ import DiscountPage from "./pages/DiscountPage";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
 import Allbooks from "./pages/GenresBookPage/Allbooks";
+import Carts from "./CartItems/Carts";
 import Buyed from "./pages/Profile/Buyed";
 import Bookmarks from "./pages/Profile/Bookmarks";
 import BasketPage from "./pages/BasketPage";
@@ -42,6 +43,7 @@ const App = () => {
             />
             <Route path="/novelties" element={<NewBookPage />} />
             <Route path="/best" element={<BestBook />} />
+            <Route path="/searchBook" element={ <Carts /> } />
             <Route path="/contacts" element={<Contact />} />
             <Route path="/profile/:id" element={<Profile />}>
               <Route index path="buyed" element={<Buyed />} />
