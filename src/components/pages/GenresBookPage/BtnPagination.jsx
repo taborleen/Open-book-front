@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./pagination.module.css";
+import styles from "../DiscountPage/pagination.module.css";
 const WatchPagination = ({
   elementsPerPage,
   totalElements,

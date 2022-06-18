@@ -8,7 +8,7 @@ export const fetchNewBooks = createAsyncThunk(
   "newBooks/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/books`);
+      const res = await fetch(`http://localhost:3001/books/new`);
 
       return await res.json();
     } catch (e) {

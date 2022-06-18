@@ -24,7 +24,7 @@ export const fetchGenresBooks = createAsyncThunk(
     try {
       const res = await fetch(`http://localhost:3001/books/genre/${id}`);
       const data = await res.json();
-      return data
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -33,11 +33,11 @@ export const fetchGenresBooks = createAsyncThunk(
 
 export const fetchGetBooks = createAsyncThunk(
   "books/fetchGetBooks",
-  async (_,thunkAPI) => {
+  async (_, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3001/books");
       const data = await res.json();
-      return data
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
@@ -54,12 +54,11 @@ export const genresBookSlice = createSlice({
         state.genresBook = action.payload;
       })
       .addCase(fetchGenresBooks.fulfilled, (state, action) => {
-        state.books = action.payload
+        state.books = action.payload;
       })
       .addCase(fetchGetBooks.fulfilled, (state, action) => {
         state.books = action.payload;
-      })
-
+      });
   },
 });
 

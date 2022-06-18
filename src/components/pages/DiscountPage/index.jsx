@@ -2,10 +2,7 @@ import React from "react";
 import CartItems from "../../CartItems";
 import styles from "../../CartItems/cart.module.css";
 
-function DiscountPage({ elements, loading }) {
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+function DiscountPage({ elements }) {
   return (
     <div className={styles.main}>
       {elements.map((bookDis) => {

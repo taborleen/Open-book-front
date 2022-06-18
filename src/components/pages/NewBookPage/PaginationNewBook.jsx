@@ -1,14 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
-import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { fetchDiscountBooks } from "../../../features/discountBookSlice";
-import DiscountPage from "./index";
+import { fetchNewBooks } from "../../../features/newBooksSlice";
 import { useState } from "react";
-import WatchPagination from "./BtnPagination";
-
+import BtnPagination from "./BtnPagination";
+import NewBookPage from "./index"
 const PaginationDiscount = () => {
-  const discountBook = useSelector((state) => state.discountBook.discountBooks);
   const dispatch = useDispatch();
 
   const [elements, setElements] = useState([]);
@@ -16,8 +13,9 @@ const PaginationDiscount = () => {
   const [elementsPerPage] = useState(8);
 
   useEffect(() => {
-    dispatch(fetchDiscountBooks()).then((data) => {
+    dispatch(fetchNewBooks()).then((data) => {
       setElements(data.payload);
+      console.log(data.payload);
     });
   }, [dispatch]);
 
@@ -34,11 +32,8 @@ const PaginationDiscount = () => {
 
   return (
     <div>
-      <DiscountPage
-        elements={currentElement}
-        key={elements.id}
-      />
-      <WatchPagination
+      <NewBookPage elements={currentElement} key={elements.id} />
+      <BtnPagination
         elementsPerPage={elementsPerPage}
         totalElements={elements.length}
         paginate={paginate}

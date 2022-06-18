@@ -1,26 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchNewBooks } from "../../../features/newBooksSlice";
+import React from "react";
 import CartItems from "../../CartItems";
-import styles from "../../CartItems/cart.module.css";
+import styles from "../DiscountPage/pagination.module.css";
+
 import { Link } from "react-router-dom";
 
-const NewBookPage = () => {
-  const newBooks = useSelector((state) => state.newBook.newBooks);
-  const dispatch = useDispatch();
-
-  
-  useEffect(() => {
-    dispatch(fetchNewBooks());
-  }, [dispatch]);
-
-  const result = newBooks.filter((book) => {
-    if (book.publicationYear === "2022") {
-      return true;
-    }
-    return false;
-  });
-
+const NewBookPage = ({ elements }) => {
   return (
     <>
       <div>
@@ -39,7 +23,7 @@ const NewBookPage = () => {
         <h3>Новинки</h3>
       </div>
       <div className={styles.main}>
-        {result.map((book) => {
+        {elements.map((book) => {
           return <CartItems key={book._id} book={book} />;
         })}
       </div>

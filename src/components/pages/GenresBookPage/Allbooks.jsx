@@ -1,19 +1,11 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchGetBooks } from "../../../features/genresBookSlice";
+import React from "react";
 import CartItems from "../../CartItems";
 
-const Allbooks = () => {
-  const dispatch = useDispatch();
-  const books = useSelector((state) => state.genresBook.books);
-  
-
-  useEffect(() => {
-    dispatch(fetchGetBooks());
-  }, [dispatch]);
+const Allbooks = ({elements}) => {
+console.log(elements)
   return (
     <div>
-      {books.map((item) => {
+      {elements.map((item) => {
         return <CartItems key={item._id} book={item} />;
       })}
     </div>
