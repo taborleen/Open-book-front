@@ -142,7 +142,7 @@ const authSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(editAvatar.fulfilled, (state, action) => {
-        state.image = action.payload;
+        state.userAuth = action.payload;
       });
   },
 });

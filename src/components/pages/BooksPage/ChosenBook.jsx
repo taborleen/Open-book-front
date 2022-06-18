@@ -22,10 +22,11 @@ const ChosenBook = ({book}) => {
         </Carousel>
       </div>
       <div className={styles.author}>
-        <div className={styles.authorName}>{book.author.name}</div>
+        <Link to={`/authors/${book.author._id}`}>
+          <div className={styles.authorName}>{props.book.author.name}</div>
+        </Link>
         <div className={styles.nameOfTheBook}>{book.name}</div>
         <Rating name="read-only" value={rating} readOnly  />
-
         <div className={styles.inStock}>
           {book.left > 0 ? "✔️  В наличии" : "✖️ Нет в наличии"}
         </div>
