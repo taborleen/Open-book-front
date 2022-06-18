@@ -1,14 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import imageZakladka from "../../assets/image/bookmark-solid.svg";
 import imageBasket from "../../assets/image/cart-shopping-solid.svg";
 import imageProf from "../../assets/image/circle-user-solid.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { doLogin, fetchOneUser } from "../../features/auth";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const token = useSelector((state) => state.auth.token);
 
@@ -93,7 +91,7 @@ const Header = () => {
           </ul>
           <ul className={styles.logoPages}>
             <li>
-              <Link to={`/favorites/${user}`}>
+              <Link to={`/profile/${user}/bookmarks`}>
                 <img src={imageZakladka} alt="" />
               </Link>
             </li>

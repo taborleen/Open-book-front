@@ -2,17 +2,20 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const editBookmarks = createAsyncThunk(
   "user/editBookmarks",
-  async ({ book, id }, thunkAPI) => {
+  async ({ bookId }, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
 
-      const res = await fetch(`http://localhost:3001/users/${id}/bookmarks`, {
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${state.auth.token}`,
-        },
-        body: JSON.stringify({ book }),
-      });
+      const res = await fetch(
+        `http://localhost:3001/users/${state.auth.user}/bookmarks`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+          body: JSON.stringify({ bookmarks : bookId }),
+        }
+      );
 
       const data = await res.json();
       console.log(data);
@@ -28,10 +31,39 @@ export const editBookmarks = createAsyncThunk(
   }
 );
 
+export const removeBookmark = createAsyncThunk(
+  "user/removeBookmark",
+  async (book, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+
+      const res = await fetch(
+        `http://localhost:3001/users/${state.auth.user}/bookmarks/delete`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+          body: JSON.stringify({ bookmarks: book }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = {
   loading: false,
   error: null,
-  checked: false,
 };
 
 const usersSlice = createSlice({
@@ -46,7 +78,6 @@ const usersSlice = createSlice({
       .addCase(editBookmarks.fulfilled, (state, action) => {
         state.loading = false;
         state.error = null;
-        state.checked = true;
       })
       .addCase(editBookmarks.rejected, (state, action) => {
         state.loading = false;
