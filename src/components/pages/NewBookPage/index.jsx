@@ -9,6 +9,7 @@ const NewBookPage = () => {
   const newBooks = useSelector((state) => state.newBook.newBooks);
   const dispatch = useDispatch();
 
+  
   useEffect(() => {
     dispatch(fetchNewBooks());
   }, [dispatch]);

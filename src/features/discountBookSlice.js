@@ -8,7 +8,7 @@ export const fetchDiscountBooks = createAsyncThunk(
   "discountBooks/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/books`);
+      const res = await fetch(`http://localhost:3001/books/discount`);
 
       return await res.json();
     } catch (e) {
@@ -23,13 +23,7 @@ export const discountSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchDiscountBooks.fulfilled, (state, action) => {
-      state.discountBooks = [];
-      action.payload.filter((item) => {
-        if (item.discount > 0) {
-          state.discountBooks.push(item);
-        }
-        return false;
-      });
+      state.discountBooks = action.payload;
     });
   },
 });

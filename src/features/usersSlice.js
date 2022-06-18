@@ -13,12 +13,11 @@ export const editBookmarks = createAsyncThunk(
           headers: {
             Authorization: `Bearer ${state.auth.token}`,
           },
-          body: JSON.stringify({ bookmarks : bookId }),
+          body: JSON.stringify({ bookmarks: bookId }),
         }
       );
 
       const data = await res.json();
-      console.log(data);
 
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);

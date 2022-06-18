@@ -35,7 +35,7 @@ export const similarBookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(getSimilarBooks.fulfilled, (state, action) => {
-        console.log(action.payload)
+
       state.similarBooks.push(action.payload);
       
     })

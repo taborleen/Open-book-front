@@ -21,14 +21,13 @@ import Carts from "./CartItems/Carts";
 import Buyed from "./pages/Profile/Buyed";
 import Bookmarks from "./pages/Profile/Bookmarks";
 import BasketPage from "./pages/BasketPage";
-
+import PaginationDiscount from "./pages/DiscountPage/PaginationDiscount";
 const App = () => {
   const token = useSelector((state) => state.auth.token);
 
   return (
     <>
       <Header />
-
       <div className="mainContainer">
         <main>
           <Routes>
@@ -43,20 +42,20 @@ const App = () => {
             />
             <Route path="/novelties" element={<NewBookPage />} />
             <Route path="/best" element={<BestBook />} />
-            <Route path="/searchBook" element={ <Carts /> } />
+            <Route path="/searchBook" element={<Carts />} />
             <Route path="/contacts" element={<Contact />} />
             <Route path="/profile/:id" element={<Profile />}>
               <Route index path="buyed" element={<Buyed />} />
               <Route path="bookmarks" element={<Bookmarks />} />
             </Route>
-            <Route path="/authors" element={<AuthorBook />} />
-            <Route path="/discounts" element={<DiscountPage />} />
+            <Route path="/authors/:id" element={<AuthorBook />} />
+            <Route path="/discounts" element={<PaginationDiscount />} />
             <Route path="/genres" element={<GenrePage />}>
               <Route index element={<Allbooks />} />
               <Route path="/genres/:id" element={<BooksGenre />} />
             </Route>
             <Route path="/books/:id" element={<Book />} />
-           <Route path="/basket" element={<BasketPage/>} />
+            <Route path="/basket" element={<BasketPage />} />
           </Routes>
         </main>
       </div>
