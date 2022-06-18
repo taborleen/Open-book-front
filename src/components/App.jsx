@@ -11,13 +11,16 @@ import BestBook from "./pages/BestBookPage";
 import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
 import Book from "./pages/BooksPage/Books";
-import Profile from "./pages/Profile/Profile";
+import Profile from "./pages/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
 import DiscountPage from "./pages/DiscountPage";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
 import Allbooks from "./pages/GenresBookPage/Allbooks";
-import PaginationPage from "./pages/PaginationPage/PaginationPage";
+import Carts from "./CartItems/Carts";
+import Buyed from "./pages/Profile/Buyed";
+import Bookmarks from "./pages/Profile/Bookmarks";
+import BasketPage from "./pages/BasketPage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -25,7 +28,8 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="container">
+
+      <div className="mainContainer">
         <main>
           <Routes>
             <Route
@@ -39,8 +43,12 @@ const App = () => {
             />
             <Route path="/novelties" element={<NewBookPage />} />
             <Route path="/best" element={<BestBook />} />
+            <Route path="/searchBook" element={ <Carts /> } />
             <Route path="/contacts" element={<Contact />} />
-            <Route path="/profile/:id" element={<Profile />} />
+            <Route path="/profile/:id" element={<Profile />}>
+              <Route index path="buyed" element={<Buyed />} />
+              <Route path="bookmarks" element={<Bookmarks />} />
+            </Route>
             <Route path="/authors" element={<AuthorBook />} />
             <Route path="/discounts" element={<DiscountPage />} />
             <Route path="/genres" element={<GenrePage />}>
@@ -48,7 +56,7 @@ const App = () => {
               <Route path="/genres/:id" element={<BooksGenre />} />
             </Route>
             <Route path="/books/:id" element={<Book />} />
-            <Route path="/allBooks" element={<PaginationPage />} />
+           <Route path="/basket" element={<BasketPage/>} />
           </Routes>
         </main>
       </div>
