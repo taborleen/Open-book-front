@@ -1,58 +1,55 @@
 .header {
-    height: 138px;
-    background-color: #A0293D;
+  height: 138px;
+  background-color: #a0293d;
 }
 
 .nameShop {
-    width: 1200px;
-    margin-left: 150px ;
-    height: 58px;
-    display: flex;
+  width: 1200px;
+  margin-left: 150px;
+  height: 58px;
+  display: flex;
 }
 .nameShop input {
-    height: 20px;
-    margin-left: 50px;
-    margin-top: 40px;
+  height: 20px;
+  margin-left: 50px;
+  margin-top: 40px;
+ 
 }
 .nameShop h2 {
-    padding-top: 32px;
-    color: white;
-    font-weight: 200;
+  padding-top: 32px;
+  color: white;
+  font-weight: 200;
+  margin-bottom: 30px;
 }
 
 .pages {
-    display: flex;
-    margin-left: 150px;
-    width: 1200px;
-    height: 80px;
-    justify-content: space-between;
-    color: white;
-    padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
 }
 
 .textPages {
-    
-    display: flex;
-    list-style: none;
-    width: 600px;
-    justify-content: space-between;
-    
+  display: flex;
+  list-style: none;
+  width: 600px;
+  justify-content: space-between;
 }
 
-
 .logoPages {
-    display: flex;
-    list-style: none;
-    width: 125px;
-    justify-content: space-between;
+  display: flex;
+  list-style: none;
+  width: 125px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .link {
-    text-decoration: none;
-    color: #fff;
+  text-decoration: none;
+  color: #fff;
 }
 
 .active {
-    text-decoration: none;
-    color: gold;
+  text-decoration: none;
+  color: gold;
 }
