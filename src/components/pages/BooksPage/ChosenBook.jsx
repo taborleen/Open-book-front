@@ -1,18 +1,25 @@
 import { Carousel } from "react-responsive-carousel";
 import styles from "./books.module.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Link } from "react-router-dom";
 const ChosenBook = (props) => {
   return (
     <div className={styles.main}>
       <div className={styles.pic}>
-          <Carousel infiniteLoop autoPlay onSwipeMove>
-            {props.book.image.map((img, index) => {
-              return <div><img src={img} alt="" /></div>;
-            })}
+        <Carousel infiniteLoop autoPlay onSwipeMove>
+          {props.book.image.map((img, index) => {
+            return (
+              <div>
+                <img src={img} alt="" />
+              </div>
+            );
+          })}
         </Carousel>
       </div>
       <div className={styles.author}>
-        <div className={styles.authorName}>{props.book.author.name}</div>
+        <Link to={`/authors/${props.book.author._id}`}>
+          <div className={styles.authorName}>{props.book.author.name}</div>
+        </Link>
         <div className={styles.nameOfTheBook}>{props.book.name}</div>
         <div className={styles.inStock}>
           {props.book.left > 0 ? "✔️  В наличии" : "✖️ Нет в наличии"}

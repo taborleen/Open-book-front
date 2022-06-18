@@ -7,9 +7,9 @@ const initialState = {
 
 export const fetchAuthorBook = createAsyncThunk(
   "authorBook/fetchAuthorBook",
-  async (_, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
-      const res = await fetch("http://localhost:3001/authors");
+      const res = await fetch(`http://localhost:3001/authors/${id}`);
       const data = await res.json();
       return data
     } catch (e) {
@@ -42,6 +42,7 @@ export const authorBookSlice = createSlice({
     builder
     .addCase(fetchAuthorBook.fulfilled, (state, action) => {
       state.author = action.payload;
+      console.log(state.author);
     })
     .addCase(fetchBooks.fulfilled, (state, action) => {
       console.log(action.payload.authorId);
