@@ -19,6 +19,7 @@ import GenrePage from "./pages/GenresBookPage/GenrePage";
 import Allbooks from "./pages/GenresBookPage/Allbooks";
 import Buyed from "./pages/Profile/Buyed";
 import Bookmarks from "./pages/Profile/Bookmarks";
+import BasketPage from "./pages/BasketPage";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -48,11 +49,12 @@ const App = () => {
             </Route>
             <Route path="/authors" element={<AuthorBook />} />
             <Route path="/discounts" element={<DiscountPage />} />
-            <Route path="/genres/*" element={<GenrePage />}>
+            <Route path="/genres" element={<GenrePage />}>
               <Route index element={<Allbooks />} />
-              <Route path=":id" element={<BooksGenre />} />
+              <Route path="/genres/:id" element={<BooksGenre />} />
             </Route>
             <Route path="/books/:id" element={<Book />} />
+           <Route path="/basket" element={<BasketPage/>} />
           </Routes>
         </main>
       </div>
