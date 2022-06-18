@@ -23,7 +23,6 @@ export const fetchBooks = createAsyncThunk(
       try {
         const res = await fetch("http://localhost:3001/books");
         const data = await res.json();
-        //console.log(authorId);
         return {
           data: data,
           authorId: authorId
@@ -45,7 +44,6 @@ export const authorBookSlice = createSlice({
       console.log(state.author);
     })
     .addCase(fetchBooks.fulfilled, (state, action) => {
-      console.log(action.payload.authorId);
         state.book = action.payload.data
         state.book = state.book.filter((item)=> item.author._id === action.payload.authorId)
       });

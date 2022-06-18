@@ -6,17 +6,7 @@ const initialState = {
   loading: false,
 };
 
-export const getSimilarBooks = createAsyncThunk(
-  "books/getSimilarBooks",
-  async (id, thunkAPI) => {
-    try {
-      const res = await fetch(`http://localhost:3001/books/genres/${id}`);
-      return await res.json();
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
-    }
-  }
-);
+
 export const getAllBooks = createAsyncThunk(
     "books/getAllBooks",
     async (_, thunkAPI) => {
@@ -34,11 +24,7 @@ export const similarBookSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getSimilarBooks.fulfilled, (state, action) => {
-        console.log(action.payload)
-      state.similarBooks.push(action.payload);
-      
-    })
+    builder
     .addCase(getAllBooks.fulfilled,(state, action)=>{
         state.books = action.payload
     });

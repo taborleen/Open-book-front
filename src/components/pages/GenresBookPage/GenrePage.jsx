@@ -9,6 +9,7 @@ import { Outlet } from "react-router-dom";
 const GenrePage = () => {
   const dispatch = useDispatch();
   const genres = useSelector((state) => state.genresBook.genresBook);
+  const books = useSelector((state) => state.genresBook.books)
 
   useEffect(() => {
     dispatch(fetchGenres())

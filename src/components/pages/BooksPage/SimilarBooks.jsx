@@ -2,27 +2,23 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAllBooks,
-  getSimilarBooks,
 } from "../../../features/similarBooksReducer";
 import CartItems from "../../CartItems";
 
 
-const SimilarBooks = ({ genres }) => {
+const SimilarBooks = ({ book }) => {
   const dispatch = useDispatch();
 
   const getAll = useSelector(
     (state) => state.similarBook.books
   );
 
-  useEffect(() => {
-    dispatch(getSimilarBooks(genres));
-  }, [dispatch, genres]);
+ 
 
   useEffect(() => {
     dispatch(getAllBooks());
   }, [dispatch]);
-
-  const filtered = getAll.filter((item) => item.genres._id === genres);
+  const filtered = getAll.filter((item) => item.genres._id === book.genres._id && item._id !== book._id);
 
   return (
     <div>
@@ -32,5 +28,6 @@ const SimilarBooks = ({ genres }) => {
     </div>
   );
 };
+
 
 export default SimilarBooks;

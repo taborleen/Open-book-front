@@ -6,7 +6,7 @@ import CartItems from "../../CartItems";
 const Allbooks = () => {
   const dispatch = useDispatch();
   const books = useSelector((state) => state.genresBook.books);
-  
+
 
   useEffect(() => {
     dispatch(fetchGetBooks());
