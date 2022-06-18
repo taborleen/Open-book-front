@@ -94,6 +94,69 @@ export const editAvatar = createAsyncThunk(
   }
 );
 
+export const editBookmarks = createAsyncThunk(
+  "user/editBookmarks",
+  async ({ bookId }, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+
+      const res = await fetch(
+        `http://localhost:3001/users/${state.auth.user}/bookmarks`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+          body: JSON.stringify({ bookmarks: bookId }),
+        }
+      );
+
+      const data = await res.json();
+      console.log(data);
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const removeBookmark = createAsyncThunk(
+  "user/removeBookmark",
+  async ({ bookId }, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+
+      const res = await fetch(
+        `http://localhost:3001/users/${state.auth.user}/bookmarks/delete`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${state.auth.token}`,
+          },
+          body: JSON.stringify({ bookmarks: bookId }),
+        }
+      );
+
+      const data = await res.json();
+
+      if (data.error) {
+        return thunkAPI.rejectWithValue(data.error);
+      } else {
+        return thunkAPI.fulfillWithValue(data);
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const initialState = {
   signupIn: false,
   signinUp: false,
@@ -145,6 +208,30 @@ const authSlice = createSlice({
       })
       .addCase(editAvatar.fulfilled, (state, action) => {
         state.userAuth = action.payload;
+      })
+      .addCase(editBookmarks.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(editBookmarks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userAuth = action.payload;
+        state.error = null;
+      })
+      .addCase(editBookmarks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(removeBookmark.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(removeBookmark.fulfilled, (state, action) => {
+        state.loading = false;
+        state.userAuth = action.payload;
+        state.error = null;
+      })
+      .addCase(removeBookmark.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
