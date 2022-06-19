@@ -14,7 +14,7 @@ const CartItems = ({ book }) => {
   const user = useSelector((state) => state.auth.userAuth);
   const dispatch = useDispatch();
 
-  const checkedBook = user.bookmarks?.find((item) => item === bookId);
+  // const checkedBook = user.bookmarks?.find((item) => item === bookId);
 
   const addToBokmarks = () => {
     dispatch(editBookmarks({ bookId }));
@@ -27,7 +27,7 @@ const CartItems = ({ book }) => {
   return (
     <>
       <div className={styles.cart}>
-        {!checkedBook ? (
+        {/* {!checkedBook ? (
           <BsFillBookmarkFill
             className={styles.bookmark}
             size="2.2em"
@@ -39,7 +39,7 @@ const CartItems = ({ book }) => {
             size="2.2em"
             onClick={() => removeFromBookmarks()}
           />
-        )}
+        )} */}
         <div className={styles.image}>
           <Link to={`/books/${book._id}`}>
             <img src={book.image[0]} alt="" />

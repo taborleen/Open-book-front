@@ -61,6 +61,7 @@ const Reviews = ({ bookId }) => {
 
   return (
     <>
+      <h1 className={styles.title}>Отзывы от пользователей</h1>
       <FormControl
         fullWidth
         onSubmit={(e) => submitHandler(e)}
@@ -103,7 +104,6 @@ const Reviews = ({ bookId }) => {
         />
       </FormControl>{" "}
       <div className="reviews">
-        <h1>Отзывы от пользователей</h1>
         <Box
           sx={{
             mb: 2,
@@ -112,7 +112,6 @@ const Reviews = ({ bookId }) => {
             height: 700,
             overflow: "hidden",
             overflowY: "scroll",
-            // justifyContent="flex-end" # DO NOT USE THIS WITH 'scroll'
           }}
         >
           {filterReviews.map((item) => {
