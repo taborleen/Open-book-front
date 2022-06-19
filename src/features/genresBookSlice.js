@@ -30,6 +30,7 @@ export const fetchGenresBooks = createAsyncThunk(
     try {
       const res = await fetch(`http://localhost:3001/books/genre/${id}`);
       const data = await res.json();
+
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       } else {
@@ -47,6 +48,7 @@ export const fetchGetBooks = createAsyncThunk(
     try {
       const res = await fetch("http://localhost:3001/books");
       const data = await res.json();
+
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       } else {

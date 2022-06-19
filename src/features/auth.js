@@ -81,6 +81,7 @@ export const editAvatar = createAsyncThunk(
       });
 
       const data = await res.json();
+
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       } else {

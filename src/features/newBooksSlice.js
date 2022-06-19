@@ -10,7 +10,7 @@ export const fetchNewBooks = createAsyncThunk(
   "newBooks/fetchNewBooks",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/books`);
+      const res = await fetch(`http://localhost:3001/books/new`);
 
       const data = await res.json();
 
