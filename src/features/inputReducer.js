@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
     reviews: [],
     likes:[],
-    adding: false
+    adding: false,
   };
 
   export const addReview = createAsyncThunk(
@@ -26,6 +26,7 @@ const initialState = {
                 "Authorization": `Bearer ${state.auth.token}`
             },
         });
+        data.callback()
         return await res.json();
       } catch (e) {
         return thunkAPI.rejectWithValue(e);
@@ -37,12 +38,15 @@ const initialState = {
     async (_, thunkAPI) => {
       try {
         const res = await fetch(`http://localhost:3001/reviews`);
-        return await res.json();
+        const data = await res.json();
+
+        return data
       } catch (e) {
         return thunkAPI.rejectWithValue(e);
       }
     }
   );
+ 
 
   export const addRating = createAsyncThunk(
     "reviews/addRating",
@@ -65,19 +69,40 @@ const initialState = {
 
   export const addLikes = createAsyncThunk(
     "reviews/addLikes",
-    async (id, thunkAPI) => {
+    async ({userId,reviewId, callback}, thunkAPI) => {
       try {
         const state = thunkAPI.getState()
-        const res = await fetch(`http://localhost:3001/reviews/likes/${id}`, {
+        const res = await fetch(`http://localhost:3001/reviews/likes/${reviewId._id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization":   `Bearer ${state.auth.token}`
 
             },
-            body: JSON.stringify({})
+            body: JSON.stringify({likes: userId })
         });
-        
+        callback()
+        return await res.json();
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  export const deleteLikes = createAsyncThunk(
+    "reviews/deleteLikes",
+    async ({userId,reviewId, callback}, thunkAPI) => {
+      try {
+        const state = thunkAPI.getState()
+        const res = await fetch(`http://localhost:3001/reviews/likes/remove/${reviewId._id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization":   `Bearer ${state.auth.token}`
+
+            },
+            body: JSON.stringify({likes: userId })
+        });
+        callback()
         return await res.json();
       } catch (e) {
         return thunkAPI.rejectWithValue(e);
@@ -85,7 +110,27 @@ const initialState = {
     }
   );
 
-  
+//   export const removeLikes = createAsyncThunk(
+//     "reviews/removeLikes",
+//     async ({userId,id}, thunkAPI) => {
+//       try {
+//         const state = thunkAPI.getState()
+//         const res = await fetch(`http://localhost:3001/reviews/likes/remove/${id}`, {
+//             method: "PATCH",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Authorization":   `Bearer ${state.auth.token}`
+
+//             },
+//             body: JSON.stringify({likes: userId})
+//         });
+        
+//         return await res.json();
+//       } catch (e) {
+//         return thunkAPI.rejectWithValue(e);
+//       }
+//     }
+//   );
 
   export const reviewSlice = createSlice({
       name:"reviews",
@@ -94,16 +139,25 @@ const initialState = {
       extraReducers:(builder)=>{
           builder
           .addCase(addReview.fulfilled, (state, action)=>{
+              console.log(action);
               state.reviews.push(action.payload)
-
               state.adding=false
           })
           .addCase(addReview.pending, (state, action)=>{
               state.adding=true
           })
           .addCase(getAllReviews.fulfilled, (state, action)=>{
+              console.log(action.payload)
               state.reviews = action.payload
           })
+          .addCase(addLikes.fulfilled, (state, action)=>{
+              console.log(state.likes);
+              state.likes.push(action.payload)
+          })
+          
+        //   .addCase(removeLikes.fulfilled,(state,action)=>{
+        //       state.likes.slice(action.payload, 1)
+        //   })
       }
   })
 
