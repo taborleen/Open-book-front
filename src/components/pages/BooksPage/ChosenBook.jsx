@@ -3,12 +3,13 @@ import styles from "./books.module.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useSelector } from "react-redux";
 import { Rating } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
 const ChosenBook = ({ book }) => {
   const reviews = useSelector((state) => state.review.reviews);
-  const reviewsFind = reviews.filter((elem) => elem.book._id === book._id);
 
+  const reviewsFind = reviews.filter((elem) => elem.book._id === book._id);
   const rating = Math.floor(
     reviewsFind.reduce((sum, item) => {
       return sum + item.grade;
@@ -29,7 +30,7 @@ const ChosenBook = ({ book }) => {
             })}
           </Carousel>
         </div>
-        <div className={styles.author}>
+        <div className={styles.bookContent}>
           <Link to={`/authors/${book.author._id}`}>
             <div className={styles.authorName}>{book.author.name}</div>
           </Link>
@@ -43,7 +44,8 @@ const ChosenBook = ({ book }) => {
             <button className={styles.btn}>В корзину</button>
           </div>
           <div>
-            <table>
+
+            <table className={styles.table}>
               <tbody>
                 <tr>
                   <td className={styles.text}>Жанр</td>

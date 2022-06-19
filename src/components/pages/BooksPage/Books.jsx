@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getBookById } from "../../../features/bookReducer";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Reviews from "./Reviews";
 import SimilarBooks from "./SimilarBooks";
@@ -29,7 +29,7 @@ const Book = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <div>
       <ChosenBook book={book} key={book._id} />
       <Reviews bookId={book._id} key={book._id}/>
       <SimilarBooks book={book} key={book._id} />

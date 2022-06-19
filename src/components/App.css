@@ -38,19 +38,16 @@ body {
 }
 
 .mainContainer {
-  max-width: 1200px;
+  max-width: 1440px;
   min-height: 100vh;
   margin: auto;
+  margin-bottom: 100px;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: auto;
 }
-
-main {
-  margin-bottom: 100px;
-} 
 
 a {
   text-decoration: none;

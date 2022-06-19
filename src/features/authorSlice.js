@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   author: [],
-  book: []
+  book: [],
 };
 
 export const fetchAuthorBook = createAsyncThunk(
@@ -11,13 +11,14 @@ export const fetchAuthorBook = createAsyncThunk(
     try {
       const res = await fetch(`http://localhost:3001/authors/${id}`);
       const data = await res.json();
-      return data
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
     }
   }
 );
 export const fetchBooks = createAsyncThunk(
+
     "books/fetchBooks",
     async (authorId, thunkAPI) => {
       try {
@@ -31,7 +32,7 @@ export const fetchBooks = createAsyncThunk(
         return thunkAPI.rejectWithValue(e);
       }
     }
-  );
+);
 
 export const authorBookSlice = createSlice({
   name: "authorBook",
@@ -39,6 +40,7 @@ export const authorBookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+
     .addCase(fetchAuthorBook.fulfilled, (state, action) => {
       state.author = action.payload;
       console.log(state.author);
