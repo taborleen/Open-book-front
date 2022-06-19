@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { fetchNewBooks } from "../../../features/newBooksSlice";
 import { useState } from "react";
-import BtnPagination from "./BtnPagination";
-import NewBookPage from "./index"
+import BtnPagination from "../../BtnPagination";
+import NewBookPage from "./index";
 const PaginationDiscount = () => {
   const dispatch = useDispatch();
 
@@ -28,6 +28,7 @@ const PaginationDiscount = () => {
 
   const paginate = (pageNumber) => {
     setcurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   return (

@@ -33,8 +33,11 @@
   border-bottom: 1px solid #a0293d;
 }
 
+.cartsWrapper {
+  width: 80%;
+}
+
 .carts {
-  width: 75%;
   display: flex;
   flex-wrap: wrap;
 }
