@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchNewBooks } from "../../../features/newBooksSlice";
 import CartItems from "../../CartItems";
 import styles from "../../CartItems/cart.module.css";
-import { Link } from "react-router-dom";
+import Skeleton from "../../Skeleton";
+import Breadcrumbs from "../../BreadСrumbs";
 
 const NewBookPage = () => {
   const newBooks = useSelector((state) => state.newBook.newBooks);
+  const loading = useSelector((state) => state.newBook.loading);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,27 +22,20 @@ const NewBookPage = () => {
     return false;
   });
 
+  const skeleton = [...new Array(6)].map((_, index) => (
+    <Skeleton key={index} />
+  ));
+
   return (
     <>
-      <div>
-        <ul>
-          <li>
-            <Link className={styles.link} to="/">
-              Главная
-            </Link>
-          </li>
-          <li>
-            <Link className={styles.link} to="/novelties">
-              Новинки
-            </Link>
-          </li>
-        </ul>
-        <h3>Новинки</h3>
-      </div>
+      <Breadcrumbs link="/novelties" linkName="Новинки" />
+      <h1 className={styles.title}>Новинки</h1>
       <div className={styles.main}>
-        {result.map((book) => {
-          return <CartItems key={book._id} book={book} />;
-        })}
+        {loading
+          ? skeleton
+          : result.map((book) => {
+              return <CartItems key={book._id} book={book} />;
+            })}
       </div>
     </>
   );

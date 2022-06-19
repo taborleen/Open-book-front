@@ -9,7 +9,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addRating,
@@ -19,22 +19,20 @@ import {
 import FormControl from "@mui/material/FormControl";
 import styles from "./books.module.css";
 import { LoadingButton } from "@mui/lab";
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import { red } from '@mui/material/colors';
-
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import { red } from "@mui/material/colors";
 
 const Reviews = ({ bookId }) => {
   const [text, setText] = useState("");
-  const adding = useSelector((state)=>state.review.adding)
+  const adding = useSelector((state) => state.review.adding);
   const reviews = useSelector((state) => state.review.reviews);
-  const filterReviews = reviews.filter((elem)=>elem.book._id === bookId)
+  const filterReviews = reviews.filter((elem) => elem.book._id === bookId);
 
-  
   const [optionsValue, setOptionsValue] = useState("");
   const [isEmpty, setIsEmpty] = useState(false);
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user);
-  
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(addReview({ text, bookId, optionsValue, userId }));
@@ -61,10 +59,13 @@ const Reviews = ({ bookId }) => {
     setOptionsValue(e.target.value);
   };
 
-
   return (
     <>
-      <FormControl fullWidth onSubmit={(e)=> submitHandler(e)} className={styles.form}>
+      <FormControl
+        fullWidth
+        onSubmit={(e) => submitHandler(e)}
+        className={styles.form}
+      >
         <TextField
           id="standard-basic"
           label="Оставить отзыв"
@@ -77,7 +78,7 @@ const Reviews = ({ bookId }) => {
           fullWidth
           type="text"
         />
-        <Button 
+        <Button
           type="submit"
           fullWidth
           variant="text"
@@ -85,9 +86,13 @@ const Reviews = ({ bookId }) => {
           className={styles.inputBtn}
           onClick={submitHandler}
         >
-          {adding ?  <LoadingButton loading variant="string">
-        Submit
-      </LoadingButton> : "Отправить"}
+          {adding ? (
+            <LoadingButton loading variant="string">
+              Submit
+            </LoadingButton>
+          ) : (
+            "Отправить"
+          )}
         </Button>
         <Typography component="legend"></Typography>
         <Rating
@@ -128,12 +133,10 @@ const Reviews = ({ bookId }) => {
                       </p>
                     </Grid>
                   </Grid>
-                  <IconButton aria-label="delete" edge="start" >
-                    
-  <ThumbUpIcon />
-</IconButton>
+                  <IconButton aria-label="delete" edge="start">
+                    <ThumbUpIcon />
+                  </IconButton>
                 </Paper>
-                
               </div>
             );
           })}

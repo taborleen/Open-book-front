@@ -18,7 +18,8 @@ const Profile = () => {
 
   const exitFromAccaunt = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("id");
+    localStorage.removeItem("user");
+    localStorage.removeItem("avatar");
     window.location.reload();
   };
 
