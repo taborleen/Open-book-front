@@ -2,16 +2,16 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
-import HomePage from "./pages/HomePage";
+import HomePage from "./Pages/HomePage";
 import "./App.css";
-import Signup from "./pages/SignupPage";
-import Signin from "./pages/SigninPage";
-import NewBookPage from "./pages/NewBookPage";
-import BestBook from "./pages/BestBookPage";
-import Contact from "./pages/ContactPage";
+import Signup from "./Pages/SignupPage";
+import Signin from "./Pages/SigninPage";
+import NewBookPage from "./Pages/NewBookPage";
+import BestBook from "./Pages/BestBookPage";
+import Contact from "./Pages/ContactPage";
 import { useSelector } from "react-redux";
-import Book from "./pages/BooksPage/Books";
-import Profile from "./pages/Profile";
+import Book from "./Pages/BooksPage/Books";
+import Profile from "./Pages/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
@@ -23,6 +23,7 @@ import BasketPage from "./pages/BasketPage";
 import PaginationDiscount from "./pages/DiscountPage/PaginationDiscount";
 import PaginationNew from "./pages/NewBookPage/PaginationNewBook"
 import PaginationAllBook from "./pages/GenresBookPage/PaginationAllBook"
+
 const App = () => {
   const token = useSelector((state) => state.auth.token);
 
