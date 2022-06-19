@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 import Book from "./pages/BooksPage/Books";
 import Profile from "./pages/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
-import DiscountPage from "./pages/DiscountPage";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
 import Allbooks from "./pages/GenresBookPage/Allbooks";
@@ -21,14 +20,15 @@ import Carts from "./CartItems/Carts";
 import Buyed from "./pages/Profile/Buyed";
 import Bookmarks from "./pages/Profile/Bookmarks";
 import BasketPage from "./pages/BasketPage";
-
+import PaginationDiscount from "./pages/DiscountPage/PaginationDiscount";
+import PaginationNew from "./pages/NewBookPage/PaginationNewBook"
+import PaginationAllBook from "./pages/GenresBookPage/PaginationAllBook"
 const App = () => {
   const token = useSelector((state) => state.auth.token);
 
   return (
     <>
       <Header />
-
       <main className="mainContainer">
         <Routes>
           <Route
@@ -40,7 +40,7 @@ const App = () => {
             path="/signin"
             element={token ? <Navigate to="/" /> : <Signin />}
           />
-          <Route path="/novelties" element={<NewBookPage />} />
+          <Route path="/novelties" element={<PaginationNew />} />
           <Route path="/best" element={<BestBook />} />
           <Route path="/searchBook" element={<Carts />} />
           <Route path="/contacts" element={<Contact />} />
@@ -49,9 +49,9 @@ const App = () => {
             <Route path="bookmarks" element={<Bookmarks />} />
           </Route>
           <Route path="/authors/:id" element={<AuthorBook />} />
-          <Route path="/discounts" element={<DiscountPage />} />
+          <Route path="/discounts" element={<PaginationDiscount />} />
           <Route path="/genres" element={<GenrePage />}>
-            <Route index element={<Allbooks />} />
+          <Route index element={<PaginationAllBook />} />
             <Route path="/genres/:id" element={<BooksGenre />} />
           </Route>
           <Route path="/books/:id" element={<Book />} />

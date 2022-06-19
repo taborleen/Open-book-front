@@ -8,18 +8,13 @@ import CartItems from "../../CartItems";
 import styles from "../../CartItems/cart.module.css";
 import Skeleton from "../../Skeleton";
 
-function DiscountPage(props) {
-  const discountBook = useSelector((state) => state.discountBook.discountBooks);
+function DiscountPage({elements}) {
   const loading = useSelector((state) => state.discountBook.loading);
-  const dispatch = useDispatch();
 
   const skeleton = [...new Array(6)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
-  useEffect(() => {
-    dispatch(fetchDiscountBooks());
-  }, [dispatch]);
   return (
     <>
       <BreadCrumbs link="/discounts" linkName="Скидки" />
@@ -27,9 +22,9 @@ function DiscountPage(props) {
       <div className={styles.main}>
         {loading
           ? skeleton
-          : discountBook.map((bookDis) => {
-              return <CartItems key={bookDis._id} book={bookDis} />;
-            })}
+          :       elements.map((bookDis) => {
+            return <CartItems key={bookDis._id} book={bookDis} />;
+          })}
       </div>
     </>
   );

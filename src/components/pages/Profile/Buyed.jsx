@@ -8,9 +8,9 @@ const Buyed = () => {
     <div>
       <div>
         <div>
-          {user.buyed?.map((book) => {
+          {/* {user.buyed?.map((book) => {
             return <div>{book.name}</div>;
-          })}
+          })} */}
         </div>
       </div>
     </div>
