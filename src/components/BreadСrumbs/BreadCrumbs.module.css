@@ -1,0 +1,24 @@
+.links {
+  width: fit-content;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  text-decoration: none;
+  padding-top: 75px;
+  margin-bottom: 25px;
+}
+
+.links li {
+    margin-right: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: #a7a7a7;
+}
+
+.active {
+    color: #a0293d
+}

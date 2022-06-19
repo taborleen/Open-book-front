@@ -1,11 +1,12 @@
 import styles from "./cart.module.css";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, Navigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { editBookmarks, removeBookmark } from "../../features/auth";
+import AuthMessage from "../AuthMessage";
 
 const CartItems = ({ book }) => {
   const newPrice = book.price - (book.price / 100) * book.discount;
@@ -29,13 +30,13 @@ const CartItems = ({ book }) => {
         {!checkedBook ? (
           <BsFillBookmarkFill
             className={styles.bookmark}
-            size="2em"
+            size="2.2em"
             onClick={() => addToBokmarks()}
           />
         ) : (
           <BsFillBookmarkCheckFill
             className={styles.bookmark}
-            size="2em"
+            size="2.2em"
             onClick={() => removeFromBookmarks()}
           />
         )}
@@ -46,7 +47,7 @@ const CartItems = ({ book }) => {
         </div>
         <div className={styles.content}>
           <div className={styles.author}>{book.author.name}</div>
-          <h4 className={styles.title}>{book.name}</h4>
+          <h4 className={styles.name}>{book.name}</h4>
           <div className={styles.buy}>
             {book.discount > 0 ? (
               <div>

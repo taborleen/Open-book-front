@@ -1,72 +1,46 @@
 YMaps[class$="map"]:first-child:not(:last-child) {
-    display: none;
-  }
-  
-  .content {
-    width: 1440px;
-    min-height: 520px;
-    display: flex;
-    margin: auto;
-  }
-  
-  .info {
-    width: 40%;
-  }
+  display: none;
+}
 
-  .concatConteiner {
-    width: 60%;
-  }
+.content {
+  display: flex;
+  justify-content: space-between;
+}
 
-  .concat {
-    margin-top: 145px ;
-  }
+.info {
+  width: 35%;
+}
 
-  .infoText {
-    margin-top: 100px;
-    margin-left: 130px;
-  }
+.mapContainer {
+  width: 60%;
+}
 
-  .infoText h1 {
-    font-weight: 400;
-    margin-top: 10px;
-  }
+.map {
+  width: 100%;
+}
 
-  .street {
-    margin-top: 50px;
-  }
+.infoText h1 {
+  margin-top: 10px;
+}
 
-  .social {
-    margin-top: 30px;
-    font-weight: 200px;
-  }
-  .infoText ul {
-    width: fit-content;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    text-decoration: none;
-  }
-  .infoText ul li {
-    margin-right: 20px;
-  }
+.street {
+  margin-top: 50px;
+  font-size: 25px;
+}
 
-  .link {
-    text-decoration: none;
-    color: #A7A7A7;
-  }
+.street p {
+  color: #373737;
+  margin-bottom: 35px;
+}
 
-  p {
-    margin-top: 10px;
-  }
+.street span {
+  margin-right: 12px;
+}
 
-  .logo {
-    margin-top: 15px;
-    width: 50px;
-    display: flex;
-    justify-content: space-between;
-  }
-
-
- 
+.logo {
+  margin-top: 20px;
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}

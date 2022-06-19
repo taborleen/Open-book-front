@@ -1,25 +1,27 @@
 .header {
-  height: 138px;
+  min-height: 138px;
   background-color: #a0293d;
+  margin-bottom: 75px;
 }
 
 .nameShop {
-  width: 1200px;
-  margin-left: 150px;
-  height: 58px;
   display: flex;
+  padding-top: 30px;
+  margin-bottom: 10px;
 }
-.nameShop input {
-  height: 20px;
-  margin-left: 50px;
-  margin-top: 40px;
- 
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 6px 6px 5px rgb(0 0 0 / 60%);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
 }
-.nameShop h2 {
-  padding-top: 32px;
-  color: white;
-  font-weight: 200;
-  margin-bottom: 30px;
+
+.logo span {
+  margin-left: 10px;
 }
 
 .pages {
@@ -34,6 +36,10 @@
   list-style: none;
   width: 600px;
   justify-content: space-between;
+}
+
+.textPages li {
+  text-shadow: 6px 6px 5px rgb(0 0 0 / 60%);
 }
 
 .logoPages {
@@ -52,4 +58,76 @@
 .active {
   text-decoration: none;
   color: gold;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 43%;
+}
+
+.searchForm {
+  position: relative;
+  width: 74%;
+}
+
+.searchInput {
+  border: none;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 50px;
+  width: 100%;
+  padding-left: 35px;
+  box-shadow: 10px 10px 10px 0px rgb(0 0 0 / 50%);
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  outline: 0;
+  transform: scale(1.1);
+  padding-left: 45px;
+}
+
+.searchInput:focus + .searchIcon {
+  left: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  color: #333;
+  top: 5px;
+  left: 10px;
+  transition: all 0.3s ease;
+}
+
+.auth {
+  width: 60%;
+  margin-left: 30px;
+}
+
+.auth a {
+  margin-right: 20px;
+}
+
+.auth a:last-child {
+  margin-right: 0;
+}
+
+.button {
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 120px;
+  font-weight: bold;
+  transition: all 0.2s ease-in;
+  display: inline-block;
+  box-shadow: 10px 10px 10px 0px rgb(0 0 0 / 50%);
+}
+
+.button:hover {
+  background-color: rgb(228, 175, 0);
+  color: #fff;
+  transform: scale(1.1);
 }

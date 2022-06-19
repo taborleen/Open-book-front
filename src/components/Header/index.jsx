@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PagesNav from "./PagesNav";
 import { useDispatch } from "react-redux";
 import LogoNav from "./LogoNav";
+import { ImBooks } from "react-icons/im";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -28,12 +29,14 @@ const Header = () => {
     <div className={styles.header}>
       <div className="container">
         <div className={styles.nameShop}>
-          <h2>Booksment</h2>
-          <input autoFocus={true} onChange={(event) => setText(event)} />
+          <div className={styles.logo}>
+            <ImBooks />
+            <span>Booksment</span>
+          </div>
         </div>
         <div className={styles.pages}>
           <PagesNav />
-          <LogoNav />
+          <LogoNav setText={setText} />
         </div>
       </div>
     </div>

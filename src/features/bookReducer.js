@@ -25,6 +25,8 @@ export const bookSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getBookById.fulfilled, (state, action) => {
+        
+          state.books = []
         state.books.push((action.payload))
       })
       .addCase(getBookById.pending, (state, action) => {
