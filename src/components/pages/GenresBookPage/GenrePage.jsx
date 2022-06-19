@@ -35,11 +35,8 @@ const GenrePage = () => {
             </li>
           ))}
         </ul>
-        <div className={styles.carts}>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
-      <div></div>
     </div>
   );
 };

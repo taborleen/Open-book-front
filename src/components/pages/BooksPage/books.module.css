@@ -122,10 +122,3 @@ img {
   margin-bottom: 50px;
 }
 
-.slider .slick-arrow.slick-prev {
-  left: 0;
-}
-
-.slider .slick-arrow.slick-next {
-  right: 0;
-}

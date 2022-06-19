@@ -5,6 +5,8 @@ import CartItems from "../../CartItems";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
 
 import styles from "./books.module.css";
 import { sliderClasses } from "@mui/material";
@@ -22,13 +24,14 @@ const SimilarBooks = ({ book }) => {
 
   const settings = {
     className: "center",
-    dots: true,
     arrows: true,
     slidesToShow: 4,
     slidesToScroll: 1,
     infinite: true,
     centerPadding: "60px",
     speed: 500,
+    prevArrow: <BsFillArrowLeftCircleFill fill="black" />,
+    nextArrow: <BsFillArrowRightCircleFill fill="black" />,
   };
 
   return (

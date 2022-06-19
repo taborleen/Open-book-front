@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { fetchGetBooks } from "../../../features/genresBookSlice";
 import { useState } from "react";
-import BtnPagination from "./BtnPagination";
+import BtnPagination from "../../BtnPagination";
 import Allbooks from "./Allbooks";
+import styles from "./Genre.module.css";
 
 const PaginationAllBook = () => {
   const dispatch = useDispatch();
@@ -23,16 +24,28 @@ const PaginationAllBook = () => {
   const firstElementIndex = lastElementIndex - elementsPerPage;
   const currentElement = elements.slice(firstElementIndex, lastElementIndex);
 
-  const nextPage = () => setcurrentPage((pr) => pr + 1);
-  const prevPage = () => setcurrentPage((pr) => pr - 1);
+  const nextPage = () =>
+    setcurrentPage((pr) => {
+      window.scrollTo(0, 0);
+      return pr + 1;
+    });
+
+  const prevPage = () =>
+    setcurrentPage((pr) => {
+      window.scrollTo(0, 0);
+      return pr - 1;
+    });
 
   const paginate = (pageNumber) => {
     setcurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
 
   return (
-    <div>
-      <Allbooks elements={currentElement} key={elements.id} />
+    <div className={styles.cartsWrapper}>
+      <div className={styles.carts}>
+        <Allbooks elements={currentElement} key={elements.id} />
+      </div>
       <BtnPagination
         elementsPerPage={elementsPerPage}
         totalElements={elements.length}

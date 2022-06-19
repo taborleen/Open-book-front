@@ -5,10 +5,9 @@ import { useDispatch } from "react-redux/es/hooks/useDispatch";
 import { fetchDiscountBooks } from "../../../features/discountBookSlice";
 import DiscountPage from "./index";
 import { useState } from "react";
-import WatchPagination from "./BtnPagination";
+import WatchPagination from "../../BtnPagination";
 
 const PaginationDiscount = () => {
-  const discountBook = useSelector((state) => state.discountBook.discountBooks);
   const dispatch = useDispatch();
 
   const [elements, setElements] = useState([]);
@@ -19,6 +18,8 @@ const PaginationDiscount = () => {
     dispatch(fetchDiscountBooks()).then((data) => {
       setElements(data.payload);
     });
+
+    window.scrollTo(0, 0);
   }, [dispatch]);
 
   const lastElementIndex = currentPage * elementsPerPage;
@@ -34,10 +35,7 @@ const PaginationDiscount = () => {
 
   return (
     <div>
-      <DiscountPage
-        elements={currentElement}
-        key={elements.id}
-      />
+      <DiscountPage elements={currentElement} key={elements.id} />
       <WatchPagination
         elementsPerPage={elementsPerPage}
         totalElements={elements.length}

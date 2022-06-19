@@ -1,5 +1,8 @@
 import React from "react";
-import styles from "../DiscountPage/pagination.module.css";
+import styles from "./pagination.module.css";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { BsFillArrowRightCircleFill } from "react-icons/bs";
+
 const WatchPagination = ({
   elementsPerPage,
   totalElements,
@@ -10,7 +13,7 @@ const WatchPagination = ({
 }) => {
   const pageNumbers = [];
 
-  for (let i = 1; i < Math.ceil((totalElements + 1) / elementsPerPage ); i++) {
+  for (let i = 1; i < Math.ceil((totalElements + 1) / elementsPerPage); i++) {
     pageNumbers.push(i);
   }
 
@@ -19,10 +22,10 @@ const WatchPagination = ({
       <div className={styles.paginationWrapper}>
         <button
           disabled={currentPage === 1 && "true"}
-          className="prevPage"
+          className={styles.prevPage}
           onClick={prevPage}
         >
-          Назад
+          <BsFillArrowLeftCircleFill size="2rem" />
         </button>
         {pageNumbers.map((number) => {
           return (
@@ -38,10 +41,10 @@ const WatchPagination = ({
         })}
         <button
           disabled={pageNumbers.length === currentPage && "true"}
-          className="nextPage"
+          className={styles.nextPage}
           onClick={nextPage}
         >
-          Далее
+          <BsFillArrowRightCircleFill size="2rem" />
         </button>
       </div>
     </div>
