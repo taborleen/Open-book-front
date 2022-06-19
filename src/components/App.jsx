@@ -29,37 +29,35 @@ const App = () => {
   return (
     <>
       <Header />
-      <div className="mainContainer">
-        <main>
-          <Routes>
-            <Route
-              path="/"
-              element={!token ? <Navigate to="/signup" /> : <HomePage />}
-            />
-            <Route path="/signup" element={<Signup />} />
-            <Route
-              path="/signin"
-              element={token ? <Navigate to="/" /> : <Signin />}
-            />
-            <Route path="/novelties" element={<PaginationNew />} />
-            <Route path="/best" element={<BestBook />} />
-            <Route path="/searchBook" element={<Carts />} />
-            <Route path="/contacts" element={<Contact />} />
-            <Route path="/profile/:id" element={<Profile />}>
-              <Route index path="buyed" element={<Buyed />} />
-              <Route path="bookmarks" element={<Bookmarks />} />
-            </Route>
-            <Route path="/authors/:id" element={<AuthorBook />} />
-            <Route path="/discounts" element={<PaginationDiscount />} />
-            <Route path="/genres" element={<GenrePage />}>
-              <Route index element={<PaginationAllBook />} />
-              <Route path="/genres/:id" element={<BooksGenre />} />
-            </Route>
-            <Route path="/books/:id" element={<Book />} />
-            <Route path="/basket" element={<BasketPage />} />
-          </Routes>
-        </main>
-      </div>
+      <main className="mainContainer">
+        <Routes>
+          <Route
+            path="/"
+            element={!token ? <Navigate to="/signup" /> : <HomePage />}
+          />
+          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/signin"
+            element={token ? <Navigate to="/" /> : <Signin />}
+          />
+          <Route path="/novelties" element={<PaginationNew />} />
+          <Route path="/best" element={<BestBook />} />
+          <Route path="/searchBook" element={<Carts />} />
+          <Route path="/contacts" element={<Contact />} />
+          <Route path="/profile/:id" element={<Profile />}>
+            <Route index path="buyed" element={<Buyed />} />
+            <Route path="bookmarks" element={<Bookmarks />} />
+          </Route>
+          <Route path="/authors/:id" element={<AuthorBook />} />
+          <Route path="/discounts" element={<PaginationDiscount />} />
+          <Route path="/genres" element={<GenrePage />}>
+          <Route index element={<PaginationAllBook />} />
+            <Route path="/genres/:id" element={<BooksGenre />} />
+          </Route>
+          <Route path="/books/:id" element={<Book />} />
+          <Route path="/basket" element={<BasketPage />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   );

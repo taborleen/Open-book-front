@@ -1,20 +1,22 @@
-.container{
-    width: 600px;
-    margin: auto;
-    align-items: center;
-}
-
 .main{
     padding: 50px;
     display: flex;
-    justify-content: space-between;
+    width: 100%;
 }
 
+.bookContent {
+    width: 70%;
+}
 
-
-
+.form {
+    flex: 1;
+}
 img {
     width: 100%;
+}
+
+.descr{
+    font-size: 14px;
 }
 
 
@@ -87,3 +89,11 @@ img {
     margin-right: 30px;
 }
 
+.table {
+    width: 500px;
+    min-height: 200px;
+}
+
+/* .carousel {
+    display: flex;
+} */

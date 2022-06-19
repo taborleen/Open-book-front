@@ -1,34 +1,29 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getAllBooks,
-  getSimilarBooks,
-} from "../../../features/similarBooksReducer";
+import { getAllBooks } from "../../../features/similarBooksReducer";
 import CartItems from "../../CartItems";
+import Slider from "react-slick";
 
+import styles from "./books.module.css";
 
-const SimilarBooks = ({ genres }) => {
+const SimilarBooks = ({ book }) => {
   const dispatch = useDispatch();
-
-  const getAll = useSelector(
-    (state) => state.similarBook.books
-  );
-
-  useEffect(() => {
-    dispatch(getSimilarBooks(genres));
-  }, [dispatch, genres]);
+  const getAll = useSelector((state) => state.similarBook.books);
 
   useEffect(() => {
     dispatch(getAllBooks());
   }, [dispatch]);
-
-  const filtered = getAll.filter((item) => item.genres._id === genres);
+  const filtered = getAll.filter(
+    (item) => item.genres._id === book.genres._id && item._id !== book._id
+  );
 
   return (
-    <div>
-      {filtered.map((item) => {
-        return <CartItems key={item._id} book={item} />;
-      })}
+    <div className={styles.carousel}>
+      <Slider>
+        {filtered.map((item) => {
+          return <CartItems key={item._id} book={item} />;
+        })}
+      </Slider>
     </div>
   );
 };

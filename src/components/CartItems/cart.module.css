@@ -3,21 +3,21 @@
   flex-wrap: wrap;
 }
 
+.title {
+  margin-bottom: 40px;
+}
+
 .cart {
-  width: 279px;
-  min-height: 420px;
+  width: 300px;
+  min-height: 470px;
   background-color: #faf8f6;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
-  margin-right: 28px;
+  margin-right: 50px;
   margin-bottom: 54px;
   transition: all 0.5s ease;
   cursor: pointer;
   position: relative;
   border-radius: 5px;
-}
-
-.cart:nth-child(4n) {
-    margin-right: 0
 }
 
 .cart:hover {
@@ -26,7 +26,7 @@
 
 .image {
   padding-top: 30px;
-  width: 220px;
+  width: 75%;
   height: 300px;
   margin: auto;
 }
@@ -37,9 +37,14 @@
 }
 
 .image,
-.author,
-.title {
+.author {
   margin-bottom: 10px;
+}
+
+.name {
+  min-height: 50px;
+  font-size: 22px;
+  margin-bottom: 15px;
 }
 
 .content {
@@ -63,7 +68,7 @@ strike {
 .price,
 .discount {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .discount {
@@ -71,16 +76,29 @@ strike {
 }
 
 .btn {
-  border: none;
-  padding: 5px 8px;
-  background: #ae2747;
-  color: #fff;
-  width: 100px;
+  border: 1px solid #ae2747;
+  padding: 7px 8px;
+  background: #fff;
+  color: #ae2747;
+  width: 110px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
   font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.btn:hover {
+  border: none;
+  background: #ae2747;
+  color: #fff;
+}
+
+.btn:active {
+  transform: scale(0.94);
 }
 
 .discountPercent {
@@ -106,9 +124,9 @@ strike {
   right: 0;
   top: 0;
   color: #ae2747;
-  transition: .3s ease;
+  transition: 0.3s ease;
 }
 
 .bookmark:active {
-    transform: scale(0.91);
+  transform: scale(0.91);
 }

@@ -18,19 +18,20 @@ export const fetchAuthorBook = createAsyncThunk(
   }
 );
 export const fetchBooks = createAsyncThunk(
-  "books/fetchBooks",
-  async (authorId, thunkAPI) => {
-    try {
-      const res = await fetch("http://localhost:3001/books");
-      const data = await res.json();
-      return {
-        data: data,
-        authorId: authorId,
-      };
-    } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+
+    "books/fetchBooks",
+    async (authorId, thunkAPI) => {
+      try {
+        const res = await fetch("http://localhost:3001/books");
+        const data = await res.json();
+        return {
+          data: data,
+          authorId: authorId
+        }
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
     }
-  }
 );
 
 export const authorBookSlice = createSlice({
@@ -39,14 +40,14 @@ export const authorBookSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchAuthorBook.fulfilled, (state, action) => {
-        state.author = action.payload;
-      })
-      .addCase(fetchBooks.fulfilled, (state, action) => {
-        state.book = action.payload.data;
-        state.book = state.book.filter(
-          (item) => item.author._id === action.payload.authorId
-        );
+
+    .addCase(fetchAuthorBook.fulfilled, (state, action) => {
+      state.author = action.payload;
+      console.log(state.author);
+    })
+    .addCase(fetchBooks.fulfilled, (state, action) => {
+        state.book = action.payload.data
+        state.book = state.book.filter((item)=> item.author._id === action.payload.authorId)
       });
   },
 });
