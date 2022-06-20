@@ -15,7 +15,6 @@ const PaginationDiscount = () => {
   useEffect(() => {
     dispatch(fetchNewBooks()).then((data) => {
       setElements(data.payload);
-      console.log(data.payload);
     });
   }, [dispatch]);
 

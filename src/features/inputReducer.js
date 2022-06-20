@@ -4,6 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const initialState = {
     reviews: [],
     likes:[],
+    dislikes:[],
     adding: false,
   };
 
@@ -109,6 +110,52 @@ const initialState = {
       }
     }
   );
+  export const deleteDislikes = createAsyncThunk(
+    "reviews/deleteDislikes",
+    async ({userId,reviewId, callback}, thunkAPI) => {
+      try {
+        const state = thunkAPI.getState()
+        const res = await fetch(`http://localhost:3001/reviews/dislikes/remove/${reviewId._id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization":   `Bearer ${state.auth.token}`
+
+            },
+            body: JSON.stringify({dislikes: userId })
+        });
+        callback()
+        return await res.json();
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+
+  export const addDislikes = createAsyncThunk(
+    "reviews/addDislikes",
+    async ({userId,reviewId, callback}, thunkAPI) => {
+      try {
+        const state = thunkAPI.getState()
+        const res = await fetch(`http://localhost:3001/reviews/dislikes/${reviewId._id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization":   `Bearer ${state.auth.token}`
+
+            },
+            body: JSON.stringify({dislikes: userId  })
+        });
+        callback()
+        return await res.json();
+      } catch (e) {
+        return thunkAPI.rejectWithValue(e);
+      }
+    }
+  );
+  
+
+ 
 
 //   export const removeLikes = createAsyncThunk(
 //     "reviews/removeLikes",
@@ -139,7 +186,6 @@ const initialState = {
       extraReducers:(builder)=>{
           builder
           .addCase(addReview.fulfilled, (state, action)=>{
-              console.log(action);
               state.reviews.push(action.payload)
               state.adding=false
           })
@@ -147,12 +193,13 @@ const initialState = {
               state.adding=true
           })
           .addCase(getAllReviews.fulfilled, (state, action)=>{
-              console.log(action.payload)
               state.reviews = action.payload
           })
           .addCase(addLikes.fulfilled, (state, action)=>{
-              console.log(state.likes);
               state.likes.push(action.payload)
+          }).addCase(addDislikes.fulfilled, (state, action)=>{
+            state.dislikes.push(action.payload)
+
           })
           
         //   .addCase(removeLikes.fulfilled,(state,action)=>{

@@ -12,9 +12,10 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addDislikes,
   addLikes,
-  addRating,
   addReview,
+  deleteDislikes,
   deleteLikes,
   getAllReviews,
 } from "../../../features/inputReducer";
@@ -36,7 +37,7 @@ const Reviews = ({ bookId }) => {
   const findReviews = reviews.find(
     (elem) => elem.book._id === bookId && elem.user._id === userId
   );
-  console.log(findReviews, "2");
+
   const filterReviews = reviews.filter((elem) => elem.book._id === bookId);
   const noRepeatReviews = filterReviews.find(
     (elem) => elem.user._id === userId
@@ -95,6 +96,18 @@ const Reviews = ({ bookId }) => {
           addLikes({ userId, reviewId, callback: getReviewsForThisBook })
         );
   };
+  const dislikesHandler = (arr) => {
+    const user = arr.find((elem) => {
+      return elem === userId
+    });
+    if(user) {
+      dispatch(deleteDislikes({ userId, reviewId, callback: getReviewsForThisBook }))
+    } else {
+      dispatch(
+        addDislikes({ userId, reviewId, callback: getReviewsForThisBook })
+      )
+    }
+  };
   return (
     <>
       <h1 className={styles.title}>Отзывы от пользователей</h1>
@@ -151,8 +164,8 @@ const Reviews = ({ bookId }) => {
           }}
         >
           {filterReviews.map((item) => {
+            console.log(item);
             return (
-
               <div key={item._id} style={{ padding: 14 }} className="App">
                 <Paper style={{ padding: "40px 20px" }}>
                   <Grid container wrap="nowrap" spacing={2}>
@@ -182,9 +195,10 @@ const Reviews = ({ bookId }) => {
                     style={{ bottom: 0, left: 400 }}
                     aria-label="likes"
                     edge="end"
-                    onClick={likesHandler}
+                    onClick={() => dislikesHandler(item.dislikes)}
                   >
                     <ThumbDownIcon />
+                    {item.dislikes.length}
                   </IconButton>
                 </Paper>
               </div>

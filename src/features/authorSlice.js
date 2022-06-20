@@ -43,7 +43,6 @@ export const authorBookSlice = createSlice({
 
     .addCase(fetchAuthorBook.fulfilled, (state, action) => {
       state.author = action.payload;
-      console.log(state.author);
     })
     .addCase(fetchBooks.fulfilled, (state, action) => {
         state.book = action.payload.data
