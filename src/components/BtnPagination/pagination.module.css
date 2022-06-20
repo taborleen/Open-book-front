@@ -1,0 +1,50 @@
+.paginationWrapper {
+  margin: 0 auto;
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapperBtnPagination {
+}
+
+.btnPagination {
+}
+
+.booksWrapper {
+  display: flex;
+}
+
+.prevPage,
+.nextPage {
+  background-color: transparent;
+  border: none;
+  color: #a0293d;
+  cursor: pointer;
+}
+
+.prevPage:active,
+.nextPage:active {
+  transform: scale(0.94);
+}
+
+.btnPagination {
+  font-size: 2rem;
+  background-color: transparent;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.3s ease;
+  margin-right: 15px;
+}
+
+.btnPagination:hover {
+  background-color: #a0293d;
+  color: #fff;
+}
+
+.btnPagination:active {
+  transform: scale(0.94);
+}

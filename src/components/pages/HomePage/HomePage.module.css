@@ -1,0 +1,100 @@
+.newsSlider {
+  display: flex;
+  justify-content: center;
+  height: 600px;
+}
+
+.sliderImg {
+  width: 30%;
+}
+
+.sliderImg img {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 50%;
+  background-color: rgba(160, 41, 61, 1);
+  padding: 50px;
+  height: 100%;
+}
+
+.desk {
+  margin-bottom: 80px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.7;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn button {
+  border: none;
+  padding: 15px 40px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.btn button:hover {
+  background: gold;
+  transform: scale(0.94);
+  color: #fff;
+}
+
+.aboutUs {
+  margin-top: 85px;
+  background: linear-gradient(180deg, #ae2747 0%, #76301d 100%);
+  padding: 55px;
+  color: #fff;
+  margin-bottom: 100px;
+}
+
+.title {
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.aboutUsDesk {
+  display: flex;
+  justify-content: space-around;
+}
+
+.aboutUsDesk div {
+  width: 40%;
+}
+
+.bestBooks {
+  margin-bottom: 75px;
+}
+
+.bestBooks h2,
+.discounts h2 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.discounts {
+  padding-top: 65px;
+  background: linear-gradient(180deg, #ccac58 0%, #320711 100%);
+  box-shadow: 0px 23px 21px 9px rgba(52, 10, 18, 1);
+  margin-bottom: 150px;
+}
+
+.discounts h2 {
+  color: #fff;
+}

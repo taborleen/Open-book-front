@@ -1,16 +1,23 @@
 import styles from "./cart.module.css";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { editBookmarks, removeBookmark } from "../../features/usersSlice";
 import {postBookToBasket, fetchGetBasketBooks} from "../../features/basketSlice"
+import {
+  editBookmarks,
+  fetchOneUser,
+  removeBookmark,
+} from "../../features/auth";
 
 const CartItems = ({ book }) => {
   const newPrice = Math.floor(book.price - (book.price / 100) * book.discount);
   const bookId = book._id;
+  const user = useSelector((state) => state.auth.userAuth);
+  const id = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user)
 
@@ -27,25 +34,39 @@ useEffect(() => {
 })
  
 
+  const checkedBook = user.hasOwnProperty("bookmarks")
+    ? user.bookmarks.find((item) => item === bookId)
+    : false;
+
   const addToBokmarks = () => {
     dispatch(editBookmarks({ bookId }));
   };
 
+
   const bookShop = (bookId) => {
-    console.log(userId, basket);
     dispatch(postBookToBasket({basketId, bookId}))
   }
 
-  const removeFromBookmarks = (bookId) => {
-    dispatch(removeBookmark(bookId));
+  const removeFromBookmarks = () => {
+    dispatch(removeBookmark({ bookId }));
   };
 
   return (
     <>
       <div className={styles.cart}>
-        <div className={styles.bookmark}>
-          <BsFillBookmarkFill size="2em" onClick={() => addToBokmarks()} />
-        </div>
+        {!checkedBook ? (
+          <BsFillBookmarkFill
+            className={styles.bookmark}
+            size="2.2em"
+            onClick={() => addToBokmarks()}
+          />
+        ) : (
+          <BsFillBookmarkCheckFill
+            className={styles.bookmark}
+            size="2.2em"
+            onClick={() => removeFromBookmarks()}
+          />
+        )}
         <div className={styles.image}>
           <Link to={`/books/${book._id}`}>
             <img src={book.image[0]} alt="" />
@@ -53,7 +74,7 @@ useEffect(() => {
         </div>
         <div className={styles.content}>
           <div className={styles.author}>{book.author.name}</div>
-          <h4 className={styles.title}>{book.name}</h4>
+          <h4 className={styles.name}>{book.name}</h4>
           <div className={styles.buy}>
             {book.discount > 0 ? (
               <div>

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import InputMask from "react-input-mask";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../../features/auth";
+import styles from "./Signup.module.css";
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const error = useSelector((state) => state.error);
+  const error = useSelector((state) => state.auth.error);
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -118,7 +120,9 @@ const Signup = () => {
   const addUser = (e) => {
     e.preventDefault();
     if (disabled.trim) {
-      dispatch(registerUser({ name, lastname, email, tel, login, password }));
+      dispatch(registerUser({ name, lastname, email, tel, login, password }))
+        .unwrap()
+        .then(() => navigate("/signin"));
       setName("");
       setLastname("");
       setEmail("");
@@ -128,14 +132,16 @@ const Signup = () => {
     }
   };
 
-  const disabled = name && lastname && email && login && password;
+  const disabled = name && lastname && email && login && password && tel;
 
   return (
-    <div>
-      <form onSubmit={(e) => addUser(e)}>
-        {error && <div>Такой пользователь уже существует</div>}
+    <div className={styles.signup}>
+      <h1>Регистрация</h1>
+      <form className={styles.form} onSubmit={(e) => addUser(e)}>
+        {error && (
+          <div className={styles.error}>Такой пользователь уже существует</div>
+        )}
         <div>
-          {nameDirty && nameError && <div>{nameError}</div>}
           <input
             name="name"
             value={name}
@@ -144,9 +150,11 @@ const Signup = () => {
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangeName(e)}
           />
+          {nameDirty && nameError && (
+            <div className={styles.error}>{nameError}</div>
+          )}
         </div>
         <div>
-          {LastnameDirty && LastnameError && <div>{LastnameError}</div>}
           <input
             name="Lastname"
             type="text"
@@ -155,9 +163,11 @@ const Signup = () => {
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangeLastname(e)}
           />
+          {LastnameDirty && LastnameError && (
+            <div className={styles.error}>{LastnameError}</div>
+          )}
         </div>
         <div>
-          {emailDirty && emailError && <div>{emailError}</div>}
           <input
             name="email"
             value={email}
@@ -166,6 +176,9 @@ const Signup = () => {
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangeEmail(e)}
           />
+          {emailDirty && emailError && (
+            <div className={styles.error}>{emailError}</div>
+          )}
         </div>
         <div>
           <InputMask
@@ -178,7 +191,6 @@ const Signup = () => {
           ></InputMask>
         </div>
         <div>
-          {loginDirty && loginError && <div>{loginError}</div>}
           <input
             name="login"
             value={login}
@@ -187,9 +199,11 @@ const Signup = () => {
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangeLogin(e)}
           />
+          {loginDirty && loginError && (
+            <div className={styles.error}>{loginError}</div>
+          )}
         </div>
-        <div>
-          {passwordDirty && passwordError && <div>{passwordError}</div>}
+        <div className={styles.password}>
           <input
             name="password"
             value={password}
@@ -198,11 +212,14 @@ const Signup = () => {
             onBlur={(e) => handleBlur(e)}
             onChange={(e) => handleChangePassword(e)}
           />
+          {passwordDirty && passwordError && (
+            <div className={styles.error}>{passwordError}</div>
+          )}
           <span onClick={() => setVisible(!visible)}>👁</span>
         </div>
         <button disabled={!disabled}>Регистрация</button>
       </form>
-      <div>
+      <div className={styles.signinLink}>
         <span>
           Уже есть аккаунт? <Link to="/signin">Войти</Link>
         </span>

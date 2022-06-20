@@ -9,7 +9,7 @@ export const valueSlice = createSlice({
   initialState,
   reducers: {
     search: (state, action) => {
-      //console.log(action.payload);
+
       state.value = action.payload;
     },
   },

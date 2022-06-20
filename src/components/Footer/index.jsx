@@ -1,14 +1,22 @@
 import React from "react";
 import styles from "./Footer.module.css";
 import { NavLink } from "react-router-dom";
+import logo from "../../assets/image/booksment-logo.png";
 
 const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className="container">
         <div className={styles.footerInfo}>
-          <div className={styles.logo}>Booksment</div>
+          <div className={styles.logo}>
+            <img src={logo} alt="" />
+          </div>
           <ul className={styles.info}>
+            <li>
+              <NavLink className={styles.link} to="/">
+                Главная
+              </NavLink>
+            </li>
             <li>
               <NavLink className={styles.link} to="/genres">
                 Жанры
@@ -20,18 +28,8 @@ const Footer = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className={styles.link} to="/best">
-                Лучшие
-              </NavLink>
-            </li>
-            <li>
               <NavLink className={styles.link} to="/discounts">
                 Скидки
-              </NavLink>
-            </li>
-            <li>
-              <NavLink className={styles.link} to="/forum">
-                Форум
               </NavLink>
             </li>
             <li>

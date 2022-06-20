@@ -6,7 +6,6 @@ import { fetchGetBasketBooks, deletBasketBooks, decrement, increment } from "../
 import styles from './Basket.module.css'
 
 
-
 const BasketPage = () => {
   const BasketBooks = useSelector((state) => state.basketBookSlice.basket);
   const amount = useSelector((state) => state.basketBookSlice.amount);
@@ -95,13 +94,13 @@ const newAmountBook = BasketBooks.map((item) => {
                     </tr>
                     
                     <div>{book.totalPrice}</div>
+
                     </>
                   );
                 });
               })}
             </tbody>
           </table>
-          
         </div>
       </div>
     </>

@@ -1,17 +1,19 @@
 .wrapper {
   padding-top: 100px;
+  min-height: 100vh;
 }
 
 .nav {
-    padding-top: 10px;
-    display: flex;
-    list-style: none;
+  padding-top: 10px;
+  display: flex;
+  list-style: none;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
 
 .link {
   list-style: none;
   margin-right: 20px;
-
 }
 
 .active {
@@ -20,9 +22,8 @@
 }
 
 .userData {
-  width: 80%;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.35)
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
 }
 
 .user {
@@ -80,12 +81,8 @@
 }
 
 .data h1 {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.35);
-}
-
-.person {
-  padding: 20px;
 }
 
 .name,
@@ -104,4 +101,9 @@
 
 .name span:first-child {
   margin-right: 10px;
+}
+
+.bookmarks {
+  display: flex;
+  flex-wrap: wrap;
 }

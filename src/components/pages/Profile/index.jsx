@@ -18,7 +18,8 @@ const Profile = () => {
 
   const exitFromAccaunt = () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("id");
+    localStorage.removeItem("user");
+    localStorage.removeItem("avatar");
     window.location.reload();
   };
 
@@ -28,16 +29,6 @@ const Profile = () => {
         <PersonalData user={user} id={id} />
       </div>
       <ul className={styles.nav}>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? `${styles.link} ${styles.active}` : styles.link
-            }
-            to={`/profile/${id}/buyed`}
-          >
-            Покупки
-          </NavLink>
-        </li>
         <li>
           <NavLink
             className={({ isActive }) =>
