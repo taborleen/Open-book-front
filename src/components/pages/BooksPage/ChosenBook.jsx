@@ -35,7 +35,7 @@ const ChosenBook = ({ book }) => {
             <div className={styles.authorName}>{book.author.name}</div>
           </Link>
           <div className={styles.nameOfTheBook}>{book.name}</div>
-          <Rating size='large' name="read-only" value={rating} readOnly />
+          <Rating size="large" name="read-only" value={rating} readOnly />
           <div className={styles.inStock}>
             {book.left > 0 ? "✔️  В наличии" : "✖️ Нет в наличии"}
           </div>
@@ -44,7 +44,6 @@ const ChosenBook = ({ book }) => {
             <button className={styles.btn}>В корзину</button>
           </div>
           <div>
-
             <table className={styles.table}>
               <tbody>
                 <tr>

@@ -1,20 +1,26 @@
 import styles from "./cart.module.css";
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { editBookmarks, removeBookmark } from "../../features/auth";
-import AuthMessage from "../AuthMessage";
+import {
+  editBookmarks,
+  fetchOneUser,
+  removeBookmark,
+} from "../../features/auth";
 
 const CartItems = ({ book }) => {
   const newPrice = book.price - (book.price / 100) * book.discount;
   const bookId = book._id;
   const user = useSelector((state) => state.auth.userAuth);
+  const id = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
-  // const checkedBook = user.bookmarks?.find((item) => item === bookId);
+  const checkedBook = user.hasOwnProperty("bookmarks")
+    ? user.bookmarks.find((item) => item === bookId)
+    : false;
 
   const addToBokmarks = () => {
     dispatch(editBookmarks({ bookId }));
@@ -27,7 +33,7 @@ const CartItems = ({ book }) => {
   return (
     <>
       <div className={styles.cart}>
-        {/* {!checkedBook ? (
+        {!checkedBook ? (
           <BsFillBookmarkFill
             className={styles.bookmark}
             size="2.2em"
@@ -39,7 +45,7 @@ const CartItems = ({ book }) => {
             size="2.2em"
             onClick={() => removeFromBookmarks()}
           />
-        )} */}
+        )}
         <div className={styles.image}>
           <Link to={`/books/${book._id}`}>
             <img src={book.image[0]} alt="" />
