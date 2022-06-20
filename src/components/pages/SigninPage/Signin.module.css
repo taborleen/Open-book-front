@@ -1,22 +1,22 @@
-.signup {
+.signin {
   text-align: center;
 }
 
-.signup h1 {
+.signin h1 {
   margin-bottom: 30px;
 }
 
-.signup div {
+.signin div {
   height: 70px;
   margin-bottom: 20px;
 }
 
-.signup form {
+.signin form {
   width: 500px;
   margin: auto;
 }
 
-.signup input {
+.signin input {
   width: 100%;
   border: none;
   padding: 20px 30px;
@@ -25,7 +25,7 @@
   box-shadow: 7px 7px 10px 0px rgb(0 0 0 / 40%);
 }
 
-.signup input:focus {
+.signin input:focus {
   outline: 0;
 }
 
@@ -42,7 +42,7 @@
   font-size: 25px;
 }
 
-.signup button {
+.signin button {
   padding: 15px 40px;
   background-color: #ae2747;
   color: #fff;
@@ -55,16 +55,16 @@
   cursor: pointer;
 }
 
-.signup button:disabled {
+.signin button:disabled {
   background-color: rgba(174, 39, 71, 0.5);
   cursor: not-allowed;
 }
 
-.signup button:disabled:hover {
+.signin button:disabled:hover {
   transform: scale(1);
 }
 
-.signup button:hover {
+.signin button:hover {
   transform: scale(1.1);
 }
 
