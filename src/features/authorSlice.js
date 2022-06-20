@@ -18,7 +18,7 @@ export const fetchAuthorBook = createAsyncThunk(
   }
 );
 export const fetchBooks = createAsyncThunk(
-    "books/fetchBooks",
+    "booksAuthor/fetchBooks",
     async (authorId, thunkAPI) => {
       try {
         const res = await fetch("http://localhost:3001/books");

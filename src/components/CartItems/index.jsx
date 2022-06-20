@@ -1,24 +1,44 @@
 import styles from "./cart.module.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
 import { BsFillBookmarkCheckFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { editBookmarks, removeBookmark } from "../../features/usersSlice";
+import {postBookToBasket, fetchGetBasketBooks} from "../../features/basketSlice"
 
 const CartItems = ({ book }) => {
-  const newPrice = book.price - (book.price / 100) * book.discount;
+  const newPrice = Math.floor(book.price - (book.price / 100) * book.discount);
   const bookId = book._id;
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.user)
+
+useEffect(() => {
+  dispatch(fetchGetBasketBooks())
+}, [dispatch])
+ const basket = useSelector((state) => state.basketBookSlice.basket)
+  let basketId
+ const basketUser = basket.map((item)=> {
+  if(item.userId === userId){
+    basketId = item._id
+  }
+  return basketId
+})
+ 
 
   const addToBokmarks = () => {
     dispatch(editBookmarks({ bookId }));
   };
 
-  // const removeFromBookmarks = (bookId) => {
-  //   dispatch(removeBookmark(bookId));
-  // };
+  const bookShop = (bookId) => {
+    console.log(userId, basket);
+    dispatch(postBookToBasket({basketId, bookId}))
+  }
+
+  const removeFromBookmarks = (bookId) => {
+    dispatch(removeBookmark(bookId));
+  };
 
   return (
     <>
@@ -37,13 +57,13 @@ const CartItems = ({ book }) => {
           <div className={styles.buy}>
             {book.discount > 0 ? (
               <div>
-                <span className={styles.discount}>{Math.floor(newPrice)}₽</span>
+                <span className={styles.discount}>{newPrice}₽</span>
                 <strike className={styles.price}>{book.price}₽</strike>
               </div>
             ) : (
               <span className={styles.price}>{book.price}₽</span>
             )}
-            <button className={styles.btn}>
+            <button onClick={() => bookShop(book._id, newPrice)} className={styles.btn}>
               <span>Купить</span>
               <FaShoppingCart />
             </button>

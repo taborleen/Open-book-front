@@ -49,7 +49,7 @@ const App = () => {
               <Route index path="buyed" element={<Buyed />} />
               <Route path="bookmarks" element={<Bookmarks />} />
             </Route>
-            <Route path="/authors" element={<AuthorBook />} />
+            <Route path="/authors/:id" element={<AuthorBook />} />
             <Route path="/discounts" element={<DiscountPage />} />
             <Route path="/genres" element={<GenrePage />}>
               <Route index element={<Allbooks />} />
