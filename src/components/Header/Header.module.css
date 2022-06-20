@@ -84,13 +84,7 @@
 }
 
 .searchInput:focus {
-  outline: 0;
-  transform: scale(1.1);
-  padding-left: 45px;
-}
-
-.searchInput:focus + .searchIcon {
-  left: 0;
+  outline: none;
 }
 
 .searchIcon {

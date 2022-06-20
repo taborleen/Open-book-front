@@ -3,6 +3,7 @@ import InputMask from "react-input-mask";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../../features/auth";
+import styles from "./Signup.module.css";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -131,8 +132,8 @@ const Signup = () => {
   const disabled = name && lastname && email && login && password;
 
   return (
-    <div>
-      <form onSubmit={(e) => addUser(e)}>
+    <div className={styles.signup}>
+      <form className={styles.form} onSubmit={(e) => addUser(e)}>
         {error && <div>Такой пользователь уже существует</div>}
         <div>
           {nameDirty && nameError && <div>{nameError}</div>}
@@ -188,7 +189,7 @@ const Signup = () => {
             onChange={(e) => handleChangeLogin(e)}
           />
         </div>
-        <div>
+        <div className={styles.password}>
           {passwordDirty && passwordError && <div>{passwordError}</div>}
           <input
             name="password"

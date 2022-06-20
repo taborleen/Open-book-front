@@ -15,6 +15,7 @@ const LogoNav = ({ setText }) => {
     <div className={styles.bar}>
       <div className={styles.searchForm}>
         <input
+          tabIndex="-1"
           placeholder="Поиск книг"
           className={styles.searchInput}
           autoFocus={true}

@@ -1,0 +1,24 @@
+.signup {
+  text-align: center;
+}
+
+.signup form {
+    width: 500px;
+    margin: auto;
+}
+
+.signup input {
+  width: 100%;
+  border: none;
+  padding: 10 20px;
+}
+
+.password {
+  position: relative;
+}
+
+.password span {
+  position: absolute;
+  right: 5px;
+  color: #ccc;
+}
