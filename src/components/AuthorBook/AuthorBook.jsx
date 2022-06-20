@@ -22,12 +22,18 @@ const AuthorBook = () => {
   return (
     <>
       <div>
-        <div className={styles.img}>
-          <img className={styles.image} src={author.photo} alt="" />
+        <div className={styles.header}>
+          <div className={styles.img}>
+            <img src={author.photo} alt="" />
+          </div>
+          <div className={styles.data}>
+            <h1>{author.name}</h1>
+            <div>
+              <p>{author.description}</p>
+            </div>
+          </div>
         </div>
-        <li>{author.name}</li>
-        <li>{author.description}</li>
-        <hr />
+        <h2 className={styles.subtitle}>Библиография автора:</h2>
         <div className={styles.booksAuthor}>
           {book.map((item) => {
             return <CartItems key={item.id} book={item} />;

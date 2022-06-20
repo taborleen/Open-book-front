@@ -26,11 +26,30 @@ const PaginationDiscount = () => {
   const firstElementIndex = lastElementIndex - elementsPerPage;
   const currentElement = elements.slice(firstElementIndex, lastElementIndex);
 
-  const nextPage = () => setcurrentPage((pr) => pr + 1);
-  const prevPage = () => setcurrentPage((pr) => pr - 1);
+  const nextPage = () =>
+    setcurrentPage((pr) => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return pr + 1;
+    });
+
+  const prevPage = () =>
+    setcurrentPage((pr) => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return pr - 1;
+    });
 
   const paginate = (pageNumber) => {
     setcurrentPage(pageNumber);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (

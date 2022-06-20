@@ -26,19 +26,28 @@ const PaginationAllBook = () => {
 
   const nextPage = () =>
     setcurrentPage((pr) => {
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       return pr + 1;
     });
 
   const prevPage = () =>
     setcurrentPage((pr) => {
-      window.scrollTo(0, 0);
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
       return pr - 1;
     });
 
   const paginate = (pageNumber) => {
     setcurrentPage(pageNumber);
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
   return (

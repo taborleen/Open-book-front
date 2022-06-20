@@ -30,6 +30,8 @@ const SimilarBooks = ({ book }) => {
     infinite: true,
     centerPadding: "60px",
     speed: 500,
+    autoplay: true,
+    cssEase: "linear",
     prevArrow: <BsFillArrowLeftCircleFill fill="black" />,
     nextArrow: <BsFillArrowRightCircleFill fill="black" />,
   };

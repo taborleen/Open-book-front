@@ -2,27 +2,26 @@ import React from "react";
 import { Navigate, Route, Routes } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
-import HomePage from "./Pages/HomePage";
-import "./App.css";
-import Signup from "./Pages/SignupPage";
-import Signin from "./Pages/SigninPage";
-import NewBookPage from "./Pages/NewBookPage";
-import BestBook from "./Pages/BestBookPage";
-import Contact from "./Pages/ContactPage";
+import HomePage from "./pages/HomePage";
+import Signup from "./pages/SignupPage";
+import Signin from "./pages/SigninPage";
+import BestBook from "./pages/BestBookPage";
+import Contact from "./pages/ContactPage";
 import { useSelector } from "react-redux";
-import Book from "./Pages/BooksPage/Books";
-import Profile from "./Pages/Profile";
 import AuthorBook from "./AuthorBook/AuthorBook";
 import BooksGenre from "./pages/GenresBookPage/BooksGenre";
 import GenrePage from "./pages/GenresBookPage/GenrePage";
-import Allbooks from "./pages/GenresBookPage/Allbooks";
 import Carts from "./CartItems/Carts";
 import Buyed from "./pages/Profile/Buyed";
 import Bookmarks from "./pages/Profile/Bookmarks";
 import BasketPage from "./pages/BasketPage";
 import PaginationDiscount from "./pages/DiscountPage/PaginationDiscount";
-import PaginationNew from "./pages/NewBookPage/PaginationNewBook"
-import PaginationAllBook from "./pages/GenresBookPage/PaginationAllBook"
+import PaginationNew from "./pages/NewBookPage/PaginationNewBook";
+import PaginationAllBook from "./pages/GenresBookPage/PaginationAllBook";
+import Profile from "./pages/Profile";
+import Book from "./pages/BooksPage/Books";
+
+import "./App.css";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -30,12 +29,11 @@ const App = () => {
   return (
     <>
       <Header />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
       <main className="mainContainer">
         <Routes>
-          <Route
-            path="/"
-            element={!token ? <Navigate to="/signup" /> : <HomePage />}
-          />
           <Route path="/signup" element={<Signup />} />
           <Route
             path="/signin"
@@ -52,7 +50,7 @@ const App = () => {
           <Route path="/authors/:id" element={<AuthorBook />} />
           <Route path="/discounts" element={<PaginationDiscount />} />
           <Route path="/genres" element={<GenrePage />}>
-          <Route index element={<PaginationAllBook />} />
+            <Route index element={<PaginationAllBook />} />
             <Route path="/genres/:id" element={<BooksGenre />} />
           </Route>
           <Route path="/books/:id" element={<Book />} />

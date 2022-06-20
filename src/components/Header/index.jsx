@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { search } from "../../features/value";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PagesNav from "./PagesNav";
 import { useDispatch } from "react-redux";
 import LogoNav from "./LogoNav";
@@ -29,10 +29,12 @@ const Header = () => {
     <div className={styles.header}>
       <div className="container">
         <div className={styles.nameShop}>
-          <div className={styles.logo}>
-            <ImBooks />
-            <span>Booksment</span>
-          </div>
+          <Link to="/">
+            <div className={styles.logo}>
+              <ImBooks />
+              <span>Booksment</span>
+            </div>
+          </Link>
         </div>
         <div className={styles.pages}>
           <PagesNav />

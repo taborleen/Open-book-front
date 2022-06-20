@@ -5,6 +5,8 @@ import { fetchGenresBooks } from "../../../features/genresBookSlice";
 import CartItems from "../../CartItems";
 import Skeleton from "../../Skeleton";
 
+import styles from "./Genre.module.css";
+
 const BooksGenre = () => {
   const { id } = useParams();
 
@@ -21,13 +23,15 @@ const BooksGenre = () => {
   }, [dispatch, id]);
 
   return (
-    <>
-      {loading
-        ? skeleton
-        : books.map((item) => {
-            return <CartItems key={item._id} book={item} />;
-          })}
-    </>
+    <div className={styles.cartsWrapper}>
+      <div className={styles.carts}>
+        {loading
+          ? skeleton
+          : books.map((item) => {
+              return <CartItems key={item._id} book={item} />;
+            })}
+      </div>
+    </div>
   );
 };
 
