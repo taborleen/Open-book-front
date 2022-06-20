@@ -38,6 +38,8 @@ const Reviews = ({ bookId }) => {
     (elem) => elem.book._id === bookId && elem.user._id === userId
   );
 
+  console.log(reviews);
+
   const filterReviews = reviews.filter((elem) => elem.book._id === bookId);
   const noRepeatReviews = filterReviews.find(
     (elem) => elem.user._id === userId
@@ -98,14 +100,16 @@ const Reviews = ({ bookId }) => {
   };
   const dislikesHandler = (arr) => {
     const user = arr.find((elem) => {
-      return elem === userId
+      return elem === userId;
     });
-    if(user) {
-      dispatch(deleteDislikes({ userId, reviewId, callback: getReviewsForThisBook }))
+    if (user) {
+      dispatch(
+        deleteDislikes({ userId, reviewId, callback: getReviewsForThisBook })
+      );
     } else {
       dispatch(
         addDislikes({ userId, reviewId, callback: getReviewsForThisBook })
-      )
+      );
     }
   };
   return (
@@ -170,7 +174,10 @@ const Reviews = ({ bookId }) => {
                 <Paper style={{ padding: "40px 20px" }}>
                   <Grid container wrap="nowrap" spacing={2}>
                     <Grid item>
-                      <Avatar alt="Remy Sharp" src={item.user.avatar} />
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={`{http://localhost:3001/${item.user.avatar}`}
+                      />
                     </Grid>
                     <Grid justifyContent="left" item xs zeroMinWidth>
                       <h4 style={{ margin: 0, textAlign: "left" }}>
@@ -182,24 +189,26 @@ const Reviews = ({ bookId }) => {
                       </p>
                     </Grid>
                   </Grid>
-                  <IconButton
-                    style={{ bottom: 0, left: 390 }}
-                    aria-label="likes"
-                    edge="start"
-                    onClick={() => likesHandler(item.likes)}
-                  >
-                    <ThumbUpIcon />
-                    {item.likes.length}
-                  </IconButton>
-                  <IconButton
-                    style={{ bottom: 0, left: 400 }}
-                    aria-label="likes"
-                    edge="end"
-                    onClick={() => dislikesHandler(item.dislikes)}
-                  >
-                    <ThumbDownIcon />
-                    {item.dislikes.length}
-                  </IconButton>
+                  <Grid style={{ margin: 0, textAlign: "right" }}>
+                    <IconButton
+                      style={{ bottom: 0 }}
+                      aria-label="likes"
+                      edge="start"
+                      onClick={() => likesHandler(item.likes)}
+                    >
+                      <ThumbUpIcon />
+                      {item.likes.length}
+                    </IconButton>
+                    <IconButton
+                      style={{ bottom: 0 }}
+                      aria-label="likes"
+                      edge="end"
+                      onClick={() => dislikesHandler(item.dislikes)}
+                    >
+                      <ThumbDownIcon />
+                      {item.dislikes.length}
+                    </IconButton>
+                  </Grid>
                 </Paper>
               </div>
             );

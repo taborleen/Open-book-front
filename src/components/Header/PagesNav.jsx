@@ -10,6 +10,16 @@ const PagesNav = () => {
           className={({ isActive }) =>
             isActive ? `${styles.link} ${styles.active}` : styles.link
           }
+          to="/"
+        >
+          Главная
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? `${styles.link} ${styles.active}` : styles.link
+          }
           to="/genres"
         >
           Жанры
@@ -25,7 +35,7 @@ const PagesNav = () => {
           Новинки
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <NavLink
           className={({ isActive }) =>
             isActive ? `${styles.link} ${styles.active}` : styles.link
@@ -34,7 +44,7 @@ const PagesNav = () => {
         >
           Лучшие
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink
           className={({ isActive }) =>

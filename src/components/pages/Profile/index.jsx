@@ -34,16 +34,6 @@ const Profile = () => {
             className={({ isActive }) =>
               isActive ? `${styles.link} ${styles.active}` : styles.link
             }
-            to={`/profile/${id}/buyed`}
-          >
-            Покупки
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? `${styles.link} ${styles.active}` : styles.link
-            }
             to={`/profile/${id}/bookmarks`}
           >
             Закладки
